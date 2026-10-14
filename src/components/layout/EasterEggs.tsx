@@ -16,40 +16,6 @@ export default function EasterEggs() {
     'KeyB', 'KeyA',
   ];
 
-  useEffect(() => {
-    // Console welcome message
-    console.log(
-      '%c◆ Kova.dev',
-      'color: #ff4d00; font-size: 24px; font-weight: bold; font-family: monospace;'
-    );
-    console.log(
-      '%cYou found the console. Respect.\nBuilt with Next.js, Three.js, and an unreasonable amount of CSS variables.\n\nLooking at the source? Hire me → hello@Kova.dev',
-      'color: #9a9590; font-size: 12px; font-family: monospace; line-height: 1.6;'
-    );
-
-    // Konami code listener
-    const handleKeyDown = (e: KeyboardEvent) => {
-      konamiBuffer.current.push(e.code);
-
-      // Keep buffer at konami code length
-      if (konamiBuffer.current.length > konamiCode.length) {
-        konamiBuffer.current.shift();
-      }
-
-      // Check if buffer matches konami code
-      if (
-        konamiBuffer.current.length === konamiCode.length &&
-        konamiBuffer.current.every((key, i) => key === konamiCode[i])
-      ) {
-        triggerKonami();
-        konamiBuffer.current = [];
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   const triggerKonami = () => {
     // Create a burst of orange particles from center of screen
     const container = document.createElement('div');
@@ -108,6 +74,40 @@ export default function EasterEggs() {
       container.remove();
     }, 2000);
   };
+
+  useEffect(() => {
+    // Console welcome message
+    console.log(
+      '%c◆ Ralph.dev',
+      'color: #ff4d00; font-size: 24px; font-weight: bold; font-family: monospace;'
+    );
+    console.log(
+      '%cYou found the console. Respect.\nBuilt with Next.js, Three.js, and an unreasonable amount of CSS variables.\n\nLooking at the source? Hire me → hello@ralph.dev',
+      'color: #9a9590; font-size: 12px; font-family: monospace; line-height: 1.6;'
+    );
+
+    // Konami code listener
+    const handleKeyDown = (e: KeyboardEvent) => {
+      konamiBuffer.current.push(e.code);
+
+      // Keep buffer at konami code length
+      if (konamiBuffer.current.length > konamiCode.length) {
+        konamiBuffer.current.shift();
+      }
+
+      // Check if buffer matches konami code
+      if (
+        konamiBuffer.current.length === konamiCode.length &&
+        konamiBuffer.current.every((key, i) => key === konamiCode[i])
+      ) {
+        triggerKonami();
+        konamiBuffer.current = [];
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return null;
 }

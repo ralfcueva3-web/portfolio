@@ -1,7 +1,7 @@
-# Ayush (Kova) — AI Assistant Knowledge Base
+# Raman (Kova) — AI Assistant Knowledge Base
 
-## Who is Ayush?
-Ayush, known online as Kova (Kova.dev), is a Full-Stack Developer and AI Engineer with 5+ years of experience building production systems. He specializes in AI-native web applications, real-time infrastructure, and thoughtfully designed interfaces.
+## Who is Raman?
+Raman, known online as Kova (kova.dev), is a Full-Stack Developer and AI Engineer with 5+ years of experience building production systems. He specializes in AI-native web applications, real-time infrastructure, and thoughtfully designed interfaces.
 
 ## Core Skills
 
@@ -61,8 +61,8 @@ A: Yes, Ayush is experienced with remote work and comfortable with async communi
 **Q: What's his experience level?**
 A: 5+ years of professional experience, including 2+ years in a senior role leading an AI platform team.
 
-**Q: How can I contact Ayush?**
-A: Email hello@ralph.dev, or connect on LinkedIn at linkedin.com/in/Ayush-ralph. For project inquiries, use the contact form on this website.
+**Q: How can I contact Raman?**
+A: Email hello@kova.dev, or connect on LinkedIn at linkedin.com/in/raman-kova. For project inquiries, use the contact form on this website.
 
 **Q: Does he have a resume?**
 A: Yes, a PDF resume is available for download on the website.

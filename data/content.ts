@@ -2,7 +2,7 @@
 // ============================================
 // PORTFOLIO CONTENT — Single source of truth
 // Edit this file to update all site content.
-// Brand: Kova.dev | Ayush, aka Kova
+// Brand: Kova.dev | Raman, aka Kova
 // ============================================
 
 // ---- Type Definitions ----
@@ -18,8 +18,18 @@ export interface SkillCategory {
   items: Skill[];
 }
 
+export interface CaseStudy {
+  problem: string;
+  approach: string;
+  challenges: string[];
+  outcome: string;
+  metrics: { label: string; value: string }[];
+  screenshots: string[];
+}
+
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   description: string;
   longDescription: string;
@@ -30,6 +40,7 @@ export interface Project {
   video: string | null;
   featured: boolean;
   year: string;
+  caseStudy: CaseStudy;
 }
 
 export interface TimelineEntry {
@@ -53,23 +64,39 @@ export interface NavItem {
   href: string;
 }
 
+export interface NowItem {
+  emoji: string;
+  text: string;
+}
+
 // ---- Site Configuration ----
 
 export const siteConfig = {
-  name: 'Kova.dev',
-  title: 'Ayush — Full-Stack Developer & AI Engineer',
+  name: 'Ralph.dev',
+  role: 'Full-Stack Developer & AI Engineer',
+  title: 'Ralph.dev | Full-Stack Developer & AI Engineer',
   description:
     'Full-stack engineer building production systems with Next.js, TypeScript, and AI. Not another portfolio template.',
   url: 'https://Kova.dev',
   ogImage: '/og-image.png',
+  keywords: [
+    'Ralph.dev',
+    'Raman',
+    'Full-Stack Developer',
+    'AI Engineer',
+    'Next.js',
+    'TypeScript',
+    'React Three Fiber',
+    'Tailwind CSS',
+    'Portfolio',
+  ],
 };
 
 // ---- Hero Section ----
 
 export const hero = {
-  // No generic "Hello, I'm" — editorial hero copy
-  nameTop: 'Ayush',
-  nameBottom: 'aka KOVA',
+  nameTop: 'Raman',
+  nameBottom: 'aka Ralph',
   descriptor: 'Full-Stack Developer & AI Engineer',
   tagline:
     'I build systems that ship — not slide decks. Currently focused on AI-native web apps, real-time infra, and interfaces that feel like they were designed by someone who actually uses them.',
@@ -98,6 +125,20 @@ export const about = {
     { label: 'Technical articles', value: 15 },
   ],
   resumeUrl: '/resume.pdf',
+};
+
+// ---- "Now" Section ----
+
+export const now = {
+  title: 'What I\'m up to',
+  subtitle: 'Updated October 2026',
+  items: [
+    { emoji: '🔧', text: 'Building an AI-powered code review tool that actually understands context' },
+    { emoji: '📖', text: 'Deep-diving into Rust for systems programming — rewriting a hot path in our pipeline' },
+    { emoji: '🧠', text: 'Experimenting with local LLMs (Ollama + Llama 3) for privacy-first AI features' },
+    { emoji: '✍️', text: 'Writing a blog series on "RAG patterns that actually work in production"' },
+    { emoji: '🎮', text: 'Playing through Elden Ring DLC — no spoilers please' },
+  ] as NowItem[],
 };
 
 // ---- Skills Section ----
@@ -151,6 +192,7 @@ export const skills = {
 export const projects: Project[] = [
   {
     id: 'neuralchat',
+    slug: 'neuralchat',
     title: 'NeuralChat',
     description:
       'Conversational AI platform with real-time streaming and multi-model support.',
@@ -158,14 +200,32 @@ export const projects: Project[] = [
       'A full-stack conversational AI platform that supports multiple LLM providers, real-time streaming responses, conversation history, and an intelligent RAG pipeline. Built with a focus on sub-200ms latency and enterprise-grade reliability.',
     stack: ['Next.js', 'TypeScript', 'Groq', 'LangChain', 'PostgreSQL', 'Redis', 'Docker'],
     liveUrl: 'https://neuralchat.demo.dev',
-    githubUrl: 'https://github.com/Kova/neuralchat',
+    githubUrl: 'https://github.com/kova/neuralchat',
     image: '/images/project-neuralchat.jpg',
     video: null,
     featured: true,
     year: '2024',
+    caseStudy: {
+      problem: 'Enterprise teams needed a self-hosted conversational AI that could switch between LLM providers without vendor lock-in, while maintaining conversation context and sub-200ms streaming latency.',
+      approach: 'Built a provider-agnostic abstraction layer over Groq, OpenAI, and Anthropic APIs. Implemented a chunked RAG pipeline with PostgreSQL pgvector for semantic search, Redis for session caching, and Server-Sent Events for real-time streaming.',
+      challenges: [
+        'Achieving sub-200ms time-to-first-token across different LLM providers with varying response profiles',
+        'Building a RAG pipeline that could ingest 10K+ documents without degrading query performance',
+        'Handling graceful provider failover when one API goes down mid-conversation',
+      ],
+      outcome: 'Deployed to 3 enterprise clients. Average latency dropped to 180ms. The RAG pipeline handles 50K+ documents with 95% retrieval accuracy. Zero-downtime provider switching became a key selling point.',
+      metrics: [
+        { label: 'Time to first token', value: '< 180ms' },
+        { label: 'Documents indexed', value: '50K+' },
+        { label: 'Retrieval accuracy', value: '95%' },
+        { label: 'Uptime', value: '99.97%' },
+      ],
+      screenshots: ['/images/neuralchat-1.jpg', '/images/neuralchat-2.jpg'],
+    },
   },
   {
     id: 'devflow',
+    slug: 'devflow',
     title: 'DevFlow',
     description:
       'Developer productivity dashboard with AI code review and analytics.',
@@ -173,14 +233,32 @@ export const projects: Project[] = [
       'An intelligent developer dashboard that aggregates GitHub activity, automates code reviews with GPT-4, tracks sprint velocity, and surfaces actionable productivity insights. Features real-time collaboration and Slack integration.',
     stack: ['React', 'Node.js', 'MongoDB', 'OpenAI', 'GraphQL', 'WebSockets'],
     liveUrl: 'https://devflow.demo.dev',
-    githubUrl: 'https://github.com/Kova/devflow',
+    githubUrl: 'https://github.com/kova/devflow',
     image: '/images/project-devflow.jpg',
     video: null,
     featured: true,
     year: '2023',
+    caseStudy: {
+      problem: 'Engineering managers had no single place to see team velocity, code quality trends, and bottlenecks. Existing tools were either too expensive or too shallow.',
+      approach: 'Integrated GitHub webhooks for real-time PR/commit data, built an AI code review layer using GPT-4 with custom prompts tuned for actionable feedback (not generic "add tests" noise), and created a GraphQL API for flexible frontend queries.',
+      challenges: [
+        'GitHub webhook volume — a single monorepo could generate 1000+ events/hour that needed deduplication',
+        'Making AI code reviews actually useful instead of generic — required fine-tuning prompts per language and codebase conventions',
+        'Real-time dashboard updates without overwhelming the WebSocket server',
+      ],
+      outcome: 'Used by 4 engineering teams (60+ developers). AI reviews catch 23% of issues before human review. Sprint velocity visibility increased team estimation accuracy by 40%.',
+      metrics: [
+        { label: 'Active developers', value: '60+' },
+        { label: 'Issues caught by AI', value: '23%' },
+        { label: 'Estimation accuracy', value: '+40%' },
+        { label: 'Review time saved', value: '35%' },
+      ],
+      screenshots: ['/images/devflow-1.jpg', '/images/devflow-2.jpg'],
+    },
   },
   {
     id: 'pixelforge',
+    slug: 'pixelforge',
     title: 'PixelForge',
     description:
       'Real-time collaborative design tool with WebGL rendering.',
@@ -188,14 +266,32 @@ export const projects: Project[] = [
       'A browser-based design tool supporting real-time multi-user collaboration, WebGL-accelerated canvas rendering, layer management, and Git-like version control for design files. Supports exporting to Figma and SVG formats.',
     stack: ['Next.js', 'Three.js', 'Y.js', 'PostgreSQL', 'AWS S3', 'WebRTC'],
     liveUrl: 'https://pixelforge.demo.dev',
-    githubUrl: 'https://github.com/Kova/pixelforge',
+    githubUrl: 'https://github.com/kova/pixelforge',
     image: '/images/project-pixelforge.jpg',
     video: null,
     featured: false,
     year: '2023',
+    caseStudy: {
+      problem: 'Design teams needed a browser-based tool for real-time collaboration without the heavy client installs and proprietary file formats of existing solutions.',
+      approach: 'Used Y.js CRDTs for conflict-free real-time collaboration, Three.js for GPU-accelerated canvas rendering, and WebRTC for peer-to-peer cursor/selection sharing. Implemented Git-like branching for design versions stored in PostgreSQL with S3 binary storage.',
+      challenges: [
+        'CRDT conflict resolution for complex nested objects like grouped layers with transforms',
+        'Maintaining 60fps canvas rendering while syncing real-time updates from multiple users',
+        'Implementing undo/redo that works correctly across collaborative sessions',
+      ],
+      outcome: 'Adopted by 2 design agencies. Supports 8 concurrent editors at 60fps. File version history with instant rollback became the most-loved feature.',
+      metrics: [
+        { label: 'Concurrent editors', value: '8' },
+        { label: 'Canvas FPS', value: '60fps' },
+        { label: 'Export formats', value: '5' },
+        { label: 'Avg sync latency', value: '< 50ms' },
+      ],
+      screenshots: ['/images/pixelforge-1.jpg', '/images/pixelforge-2.jpg'],
+    },
   },
   {
     id: 'datalens',
+    slug: 'datalens',
     title: 'DataLens',
     description:
       'ML-powered analytics platform with natural language querying.',
@@ -203,11 +299,28 @@ export const projects: Project[] = [
       'An analytics platform that lets non-technical users query complex datasets using natural language. Features automated data visualization, anomaly detection, and scheduled report generation powered by fine-tuned transformer models.',
     stack: ['Python', 'FastAPI', 'React', 'PyTorch', 'PostgreSQL', 'Docker', 'Kubernetes'],
     liveUrl: 'https://datalens.demo.dev',
-    githubUrl: 'https://github.com/Kova/datalens',
+    githubUrl: 'https://github.com/kova/datalens',
     image: '/images/project-datalens.jpg',
     video: null,
     featured: false,
     year: '2022',
+    caseStudy: {
+      problem: 'Business analysts spent 60% of their time writing SQL queries and formatting reports instead of analyzing data. They needed a way to ask questions in plain English.',
+      approach: 'Fine-tuned a transformer model to convert natural language to SQL, added a visualization recommendation engine that picks the right chart type based on query result shape, and built a scheduled report system with Slack/email delivery.',
+      challenges: [
+        'Natural language to SQL accuracy — ambiguous queries like "show me sales" needed smart defaults for time range, aggregation, and grouping',
+        'Handling schema changes without breaking fine-tuned model accuracy',
+        'Scaling the inference pipeline for concurrent query processing without GPU bottlenecks',
+      ],
+      outcome: 'Deployed at 2 mid-size companies. Reduced analyst time-to-insight by 70%. NL-to-SQL accuracy reached 89% on company-specific schemas after fine-tuning.',
+      metrics: [
+        { label: 'NL→SQL accuracy', value: '89%' },
+        { label: 'Time saved', value: '70%' },
+        { label: 'Daily queries', value: '500+' },
+        { label: 'Chart types', value: '12' },
+      ],
+      screenshots: ['/images/datalens-1.jpg', '/images/datalens-2.jpg'],
+    },
   },
 ];
 
@@ -280,11 +393,11 @@ export const contact = {
   title: "Let's work together",
   description:
     "Have something interesting to build? I'm always up for a conversation about AI, systems, or anything that ships.",
-  email: 'hello@Kova.dev',
+  email: 'hello@kova.dev',
   socials: {
-    github: 'https://github.com/Kova',
-    linkedin: 'https://linkedin.com/in/Ayush-Kova',
-    twitter: 'https://twitter.com/Kovadev',
+    github: 'https://github.com/kova',
+    linkedin: 'https://linkedin.com/in/raman-kova',
+    twitter: 'https://twitter.com/kovadev',
   },
 };
 
@@ -305,3 +418,33 @@ export const suggestedQuestions = [
   'What has he built with Next.js?',
   'Is he available for hire?',
 ];
+
+// ---- Command Palette Actions ----
+
+export const commandPaletteActions = [
+  { id: 'about', label: 'Go to About', section: 'Navigate', shortcut: '', action: 'navigate', target: '#about' },
+  { id: 'projects', label: 'Go to Projects', section: 'Navigate', shortcut: '', action: 'navigate', target: '#projects' },
+  { id: 'experience', label: 'Go to Experience', section: 'Navigate', shortcut: '', action: 'navigate', target: '#experience' },
+  { id: 'contact', label: 'Go to Contact', section: 'Navigate', shortcut: '', action: 'navigate', target: '#contact' },
+  { id: 'now', label: 'Go to Now', section: 'Navigate', shortcut: '', action: 'navigate', target: '#now' },
+  { id: 'theme', label: 'Toggle theme', section: 'Actions', shortcut: '', action: 'theme', target: '' },
+  { id: 'chat', label: 'Open KOVA chat', section: 'Actions', shortcut: '', action: 'chat', target: '' },
+  { id: 'email', label: 'Copy email address', section: 'Actions', shortcut: '', action: 'copy-email', target: 'hello@kova.dev' },
+  { id: 'resume', label: 'Download résumé', section: 'Actions', shortcut: '', action: 'download', target: '/resume.pdf' },
+  { id: 'resume-page', label: 'View résumé page', section: 'Navigate', shortcut: '', action: 'link', target: '/resume' },
+  { id: 'github', label: 'Open GitHub', section: 'Links', shortcut: '', action: 'external', target: 'https://github.com/kova' },
+  { id: 'linkedin', label: 'Open LinkedIn', section: 'Links', shortcut: '', action: 'external', target: 'https://linkedin.com/in/raman-kova' },
+];
+
+// ---- Resume Page ----
+
+export const resumeData = {
+  name: 'Raman',
+  alias: 'Ralph',
+  title: 'Full-Stack Developer & AI Engineer',
+  email: 'hello@kova.dev',
+  location: 'Kolkata, India',
+  website: 'kova.dev',
+  summary: 'Full-stack engineer with 5+ years building production systems. Specialize in AI-native applications, real-time infrastructure, and interfaces that ship. Currently focused on LLM integration, RAG pipelines, and developer tooling.',
+  pdfUrl: '/resume.pdf',
+};

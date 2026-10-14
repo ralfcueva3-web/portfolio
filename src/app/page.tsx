@@ -4,6 +4,7 @@ import Skills from '@/components/sections/Skills';
 import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import Contact from '@/components/sections/Contact';
+import Now from '@/components/sections/Now';
 import HeroSection from '@/components/sections/HeroSection';
 import Marquee from '@/components/ui/Marquee';
 import ChatWidget from '@/components/ai/ChatWidget';
@@ -63,6 +64,10 @@ export default function Home() {
       <div className="rule max-w-7xl mx-auto px-6 w-full" />
 
       <Contact />
+
+      <div className="rule max-w-7xl mx-auto px-6 w-full" />
+
+      <Now />
 
       {/* ===== EASTER EGGS ===== */}
       <EasterEggs />

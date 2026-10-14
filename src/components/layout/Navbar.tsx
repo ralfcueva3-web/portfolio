@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { useAppStore } from '@/stores/app-store';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+import Logo from '@/components/ui/Logo';
 
 /**
  * Editorial Brutalist Navigation Bar.
@@ -86,14 +87,17 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
-          {/* Logo — Editorial brutalist typography without gradients */}
+          {/* Logo — Original monogram mark + Wordmark */}
           <a
             href="#"
-            className="flex items-baseline font-display text-xl md:text-2xl font-bold tracking-tight text-text-primary hover:text-accent transition-colors"
+            className="group flex items-center gap-2.5 text-text-primary hover:text-accent transition-colors"
             aria-label={siteConfig.name}
           >
-            <span>Kova</span>
-            <span className="font-mono text-accent text-base md:text-lg">.dev</span>
+            <Logo size={24} className="text-text-primary group-hover:text-accent transition-colors" />
+            <span className="flex items-baseline font-display text-xl md:text-2xl font-bold tracking-tight">
+              <span>Ralph</span>
+              <span className="font-mono text-accent text-base md:text-lg">.dev</span>
+            </span>
           </a>
 
           {/* Desktop Navigation Links */}
@@ -228,7 +232,7 @@ export default function Navbar() {
                       >
                         <div className="flex items-baseline gap-4">
                           <span className="font-mono text-xs text-accent">
-                            0{index + 1} //
+                            0{index + 1} {'//'}
                           </span>
                           <span className="font-display text-3xl font-bold tracking-tight">
                             {item.label}

@@ -62,9 +62,9 @@ export default function Contact() {
   };
 
   const socials = [
-    { name: 'GitHub', href: contact.socials.github, icon: FiGithub, handle: '@Kova' },
-    { name: 'LinkedIn', href: contact.socials.linkedin, icon: FiLinkedin, handle: '/in/Ayush-Kova' },
-    { name: 'Twitter', href: contact.socials.twitter, icon: FiTwitter, handle: '@Kovadev' },
+    { name: 'GitHub', href: contact.socials.github, icon: FiGithub, handle: '@kova' },
+    { name: 'LinkedIn', href: contact.socials.linkedin, icon: FiLinkedin, handle: '/in/raman-kova' },
+    { name: 'Twitter', href: contact.socials.twitter, icon: FiTwitter, handle: '@kovadev' },
   ];
 
   return (
