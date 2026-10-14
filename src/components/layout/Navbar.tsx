@@ -14,7 +14,7 @@ import Logo from '@/components/ui/Logo';
  * Editorial Brutalist Navigation Bar.
  *
  * Features:
- * - Brand logo: "Kova" in display bold + ".dev" in mono orange accent
+ * - Brand logo: "Ralf" in display bold + ".dev" in mono orange accent
  * - Monospace letter-spaced desktop navigation with orange accent underline indicator
  * - Minimal text/underlined link for contact (no gradient CTA button)
  * - Backdrop blur and hairline border on scroll
@@ -95,7 +95,7 @@ export default function Navbar() {
           >
             <Logo size={24} className="text-text-primary group-hover:text-accent transition-colors" />
             <span className="flex items-baseline font-display text-xl md:text-2xl font-bold tracking-tight">
-              <span>Ralph</span>
+              <span>Ralf</span>
               <span className="font-mono text-accent text-base md:text-lg">.dev</span>
             </span>
           </a>

@@ -2,7 +2,7 @@
 // ============================================
 // PORTFOLIO CONTENT — Single source of truth
 // Edit this file to update all site content.
-// Brand: Kova.dev | Raman, aka Kova
+// Brand: Ralf.dev | Ayush, aka Ralf
 // ============================================
 
 // ---- Type Definitions ----
@@ -72,16 +72,16 @@ export interface NowItem {
 // ---- Site Configuration ----
 
 export const siteConfig = {
-  name: 'Ralph.dev',
+  name: 'Ralf.dev',
   role: 'Full-Stack Developer & AI Engineer',
-  title: 'Ralph.dev | Full-Stack Developer & AI Engineer',
+  title: 'Ralf.dev | Full-Stack Developer & AI Engineer',
   description:
     'Full-stack engineer building production systems with Next.js, TypeScript, and AI. Not another portfolio template.',
-  url: 'https://Kova.dev',
+  url: 'https://Ralf.dev',
   ogImage: '/og-image.png',
   keywords: [
-    'Ralph.dev',
-    'Raman',
+    'Ralf.dev',
+    'Ayush',
     'Full-Stack Developer',
     'AI Engineer',
     'Next.js',
@@ -95,8 +95,8 @@ export const siteConfig = {
 // ---- Hero Section ----
 
 export const hero = {
-  nameTop: 'Raman',
-  nameBottom: 'aka Ralph',
+  nameTop: 'Ayush',
+  nameBottom: 'aka Ralf',
   descriptor: 'Full-Stack Developer & AI Engineer',
   tagline:
     'I build systems that ship — not slide decks. Currently focused on AI-native web apps, real-time infra, and interfaces that feel like they were designed by someone who actually uses them.',
@@ -200,7 +200,7 @@ export const projects: Project[] = [
       'A full-stack conversational AI platform that supports multiple LLM providers, real-time streaming responses, conversation history, and an intelligent RAG pipeline. Built with a focus on sub-200ms latency and enterprise-grade reliability.',
     stack: ['Next.js', 'TypeScript', 'Groq', 'LangChain', 'PostgreSQL', 'Redis', 'Docker'],
     liveUrl: 'https://neuralchat.demo.dev',
-    githubUrl: 'https://github.com/kova/neuralchat',
+    githubUrl: 'https://github.com/ralph/neuralchat',
     image: '/images/project-neuralchat.jpg',
     video: null,
     featured: true,
@@ -233,7 +233,7 @@ export const projects: Project[] = [
       'An intelligent developer dashboard that aggregates GitHub activity, automates code reviews with GPT-4, tracks sprint velocity, and surfaces actionable productivity insights. Features real-time collaboration and Slack integration.',
     stack: ['React', 'Node.js', 'MongoDB', 'OpenAI', 'GraphQL', 'WebSockets'],
     liveUrl: 'https://devflow.demo.dev',
-    githubUrl: 'https://github.com/kova/devflow',
+    githubUrl: 'https://github.com/ralf/devflow',
     image: '/images/project-devflow.jpg',
     video: null,
     featured: true,
@@ -266,7 +266,7 @@ export const projects: Project[] = [
       'A browser-based design tool supporting real-time multi-user collaboration, WebGL-accelerated canvas rendering, layer management, and Git-like version control for design files. Supports exporting to Figma and SVG formats.',
     stack: ['Next.js', 'Three.js', 'Y.js', 'PostgreSQL', 'AWS S3', 'WebRTC'],
     liveUrl: 'https://pixelforge.demo.dev',
-    githubUrl: 'https://github.com/kova/pixelforge',
+    githubUrl: 'https://github.com/ralf/pixelforge',
     image: '/images/project-pixelforge.jpg',
     video: null,
     featured: false,
@@ -299,7 +299,7 @@ export const projects: Project[] = [
       'An analytics platform that lets non-technical users query complex datasets using natural language. Features automated data visualization, anomaly detection, and scheduled report generation powered by fine-tuned transformer models.',
     stack: ['Python', 'FastAPI', 'React', 'PyTorch', 'PostgreSQL', 'Docker', 'Kubernetes'],
     liveUrl: 'https://datalens.demo.dev',
-    githubUrl: 'https://github.com/kova/datalens',
+    githubUrl: 'https://github.com/ralf/datalens',
     image: '/images/project-datalens.jpg',
     video: null,
     featured: false,
@@ -393,11 +393,11 @@ export const contact = {
   title: "Let's work together",
   description:
     "Have something interesting to build? I'm always up for a conversation about AI, systems, or anything that ships.",
-  email: 'hello@kova.dev',
+  email: 'hello@ralf.dev',
   socials: {
-    github: 'https://github.com/kova',
-    linkedin: 'https://linkedin.com/in/raman-kova',
-    twitter: 'https://twitter.com/kovadev',
+    github: 'https://github.com/ralf',
+    linkedin: 'https://linkedin.com/in/ayush-ralf',
+    twitter: 'https://twitter.com/ralfdev',
   },
 };
 
@@ -428,23 +428,23 @@ export const commandPaletteActions = [
   { id: 'contact', label: 'Go to Contact', section: 'Navigate', shortcut: '', action: 'navigate', target: '#contact' },
   { id: 'now', label: 'Go to Now', section: 'Navigate', shortcut: '', action: 'navigate', target: '#now' },
   { id: 'theme', label: 'Toggle theme', section: 'Actions', shortcut: '', action: 'theme', target: '' },
-  { id: 'chat', label: 'Open KOVA chat', section: 'Actions', shortcut: '', action: 'chat', target: '' },
-  { id: 'email', label: 'Copy email address', section: 'Actions', shortcut: '', action: 'copy-email', target: 'hello@kova.dev' },
+  { id: 'chat', label: 'Open RALF chat', section: 'Actions', shortcut: '', action: 'chat', target: '' },
+  { id: 'email', label: 'Copy email address', section: 'Actions', shortcut: '', action: 'copy-email', target: 'hello@ralf.dev' },
   { id: 'resume', label: 'Download résumé', section: 'Actions', shortcut: '', action: 'download', target: '/resume.pdf' },
   { id: 'resume-page', label: 'View résumé page', section: 'Navigate', shortcut: '', action: 'link', target: '/resume' },
-  { id: 'github', label: 'Open GitHub', section: 'Links', shortcut: '', action: 'external', target: 'https://github.com/kova' },
-  { id: 'linkedin', label: 'Open LinkedIn', section: 'Links', shortcut: '', action: 'external', target: 'https://linkedin.com/in/raman-kova' },
+  { id: 'github', label: 'Open GitHub', section: 'Links', shortcut: '', action: 'external', target: 'https://github.com/ralf' },
+  { id: 'linkedin', label: 'Open LinkedIn', section: 'Links', shortcut: '', action: 'external', target: 'https://linkedin.com/in/ayush-ralf' },
 ];
 
 // ---- Resume Page ----
 
 export const resumeData = {
-  name: 'Raman',
-  alias: 'Ralph',
+  name: 'Ayush',
+  alias: 'Ralf',
   title: 'Full-Stack Developer & AI Engineer',
-  email: 'hello@kova.dev',
+  email: 'hello@ralf.dev',
   location: 'Kolkata, India',
-  website: 'kova.dev',
+  website: 'ralf.dev',
   summary: 'Full-stack engineer with 5+ years building production systems. Specialize in AI-native applications, real-time infrastructure, and interfaces that ship. Currently focused on LLM integration, RAG pipelines, and developer tooling.',
   pdfUrl: '/resume.pdf',
 };

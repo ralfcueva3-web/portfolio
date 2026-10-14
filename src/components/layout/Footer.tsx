@@ -40,19 +40,19 @@ export default function Footer() {
       icon: FiGithub,
       href: contact.socials.github,
       label: 'GitHub',
-      handle: 'kova',
+      handle: 'ralf',
     },
     {
       icon: FiLinkedin,
       href: contact.socials.linkedin,
       label: 'LinkedIn',
-      handle: 'raman-kova',
+      handle: 'ayush-ralf',
     },
     {
       icon: FiTwitter,
       href: contact.socials.twitter,
       label: 'Twitter',
-      handle: '@kovadev',
+      handle: '@ralfdev',
     },
   ];
 
@@ -72,7 +72,7 @@ export default function Footer() {
               >
                 <Logo size={24} className="text-text-primary group-hover:text-accent transition-colors" />
                 <span className="flex items-baseline font-display text-2xl font-bold tracking-tight">
-                  <span>Ralph</span>
+                  <span>Ralf</span>
                   <span className="font-mono text-accent text-lg">.dev</span>
                 </span>
               </a>

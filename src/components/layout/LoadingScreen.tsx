@@ -44,7 +44,7 @@ export default function LoadingScreen() {
               transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-5xl md:text-7xl font-display font-bold text-text-primary tracking-tighter"
             >
-              Kova
+              Ralf
             </motion.span>
             <motion.span
               initial={{ y: 60, opacity: 0 }}

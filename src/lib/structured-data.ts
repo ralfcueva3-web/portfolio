@@ -9,22 +9,22 @@ export function generatePersonSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Raman',
-    alternateName: 'Kova',
+    name: 'Ayush',
+    alternateName: 'Ralf',
     url: siteConfig.url,
     image: `${siteConfig.url}/og-image.png`,
     jobTitle: 'Full-Stack Developer & AI Engineer',
     description: siteConfig.description,
-    email: 'hello@kova.dev',
+    email: 'hello@ralf.dev',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Kolkata',
       addressCountry: 'IN',
     },
     sameAs: [
-      'https://github.com/kova',
-      'https://linkedin.com/in/raman-kova',
-      'https://twitter.com/kovadev',
+      'https://github.com/ralf',
+      'https://linkedin.com/in/ayush-ralf',
+      'https://twitter.com/ralfdev',
     ],
     knowsAbout: skills.categories.flatMap((c) =>
       c.items.map((s) => s.name)
@@ -48,7 +48,7 @@ export function generateWebsiteSchema() {
     description: siteConfig.description,
     author: {
       '@type': 'Person',
-      name: 'Raman',
+      name: 'Ayush',
     },
   };
 }
