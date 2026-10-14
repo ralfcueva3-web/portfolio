@@ -6,20 +6,20 @@
  */
 export const SCENE_CONFIG = {
   hero: {
-    particleCount: 600,
-    particleSize: 2,
-    sphereRadius: 3,
-    connectionDistance: 1.2,
-    connectionOpacity: 0.1,
-    rotationSpeed: 0.12,
-    mouseInfluence: 0.25,
-    // Signal orange + warm paper tones
+    particleCount: 200,
+    particleSize: 1.2,
+    sphereRadius: 5,
+    connectionDistance: 1.4,
+    connectionOpacity: 0.04,
+    rotationSpeed: 0.08,
+    mouseInfluence: 0.3,
+    // Dark theme: dim orange + very dark tones
     color: '#ff4d00',
-    secondaryColor: '#e8e4de',
-    // Alternate palette for light theme
-    lightColor: '#e64500',
-    lightSecondaryColor: '#1a1a1a',
-    glowIntensity: 0.8,
+    secondaryColor: '#331200',
+    // Light theme: deeper orange + charcoal
+    lightColor: '#cc3d00',
+    lightSecondaryColor: '#3a3a3a',
+    glowIntensity: 0.2,
   },
   skills: {
     radius: 5,
@@ -28,11 +28,11 @@ export const SCENE_CONFIG = {
     nodeSize: 0.35,
   },
   particles: {
-    count: 200,
-    size: 1.2,
-    speed: 0.03,
-    opacity: 0.25,
-    spread: 25,
+    count: 150,
+    size: 1,
+    speed: 0.02,
+    opacity: 0.12,
+    spread: 30,
   },
   performance: {
     dprClamp: [1, 1.5] as [number, number],

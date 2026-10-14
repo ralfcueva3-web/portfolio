@@ -29,6 +29,7 @@ All files created or edited during the editorial brutalist redesign:
 - `src/components/sections/Projects.tsx` — Stacked full-width entries (NEW)
 - `src/components/sections/Experience.tsx` — Horizontal table/grid layout
 - `src/components/sections/Contact.tsx` — Split layout, underline inputs
+- `src/components/sections/HeroSection.tsx` — Animated hero with parallax + stagger text reveal (NEW)
 
 ## UI Components
 - `src/components/ui/Button.tsx` — Solid accent, no gradients
@@ -44,19 +45,29 @@ All files created or edited during the editorial brutalist redesign:
 - `src/components/ui/index.ts` — Barrel with SurfaceCard alias + ThemeToggle
 
 ## 3D Scenes
-- `src/components/three/SceneConfig.ts` — Signal orange + warm paper palette
-- `src/components/three/HeroScene.tsx` — Updated light colors
+- `src/components/three/SceneConfig.ts` — Darkened palette: orange + dark rust (no white blob)
+- `src/components/three/HeroScene.tsx` — Removed additive blending, dimmed lights, accent-only particles
 - `src/components/three/SkillsCloud.tsx` — Updated category colors
 
 ## AI Features
 - `src/lib/ai.ts` — System prompt → Raman/Ralph identity
 - `src/app/api/chat/route.ts` — Streaming chat endpoint (NEW)
 - `src/app/api/summarize/route.ts` — Project summarizer endpoint (NEW)
-- `src/components/ai/ChatWidget.tsx` — Floating chat widget (NEW)
+- `src/components/ai/KovaAvatar.tsx` — KOVA animated geometric mascot with mouse-tracking eyes (NEW)
+- `src/components/ai/ChatWidget.tsx` — Chat widget with KOVA as trigger + header identity
 
 ## Docs
 - `docs/opus-work.md` — This file
 - `README.md` — Full customization guide: content, colors, fonts, 3D, deploy
 
-## Polish
+## Polish & Animation Pass
 - `src/app/globals.css` — Added `::view-transition-*` CSS for circular reveal
+- `src/app/page.tsx` — Swapped inline hero for animated HeroSection component
+- `src/components/sections/HeroSection.tsx` — Stagger text reveal, scroll parallax, bouncing scroll indicator
+- `src/components/sections/About.tsx` — Scroll-triggered: header slide, heading reveal, paragraph stagger, stats scale-in
+- `src/components/sections/Skills.tsx` — AnimatePresence category switching, proficiency bar animation, tab layoutId
+- `src/components/sections/Projects.tsx` — Project articles slide-up stagger, index scale-in, badge pop-in
+- `src/components/sections/Experience.tsx` — Rows slide from right with stagger
+- `src/components/sections/Contact.tsx` — Form fields stagger, social links animate, submit button micro-interaction
+- `src/components/three/SceneConfig.ts` — Killed white blob: dark rust secondary, reduced opacity/counts
+- `src/components/three/HeroScene.tsx` — Normal blending, accent-colored ambient particles, dimmed lights

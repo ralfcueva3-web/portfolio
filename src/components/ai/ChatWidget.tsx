@@ -3,11 +3,13 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMessageCircle, FiX, FiSend, FiCornerDownLeft } from 'react-icons/fi';
+import { FiX, FiCornerDownLeft } from 'react-icons/fi';
 import { useAppStore } from '@/stores/app-store';
 import { suggestedQuestions } from '@/../../data/content';
 import ReactMarkdown from 'react-markdown';
 import { cn } from '@/lib/utils';
+import KovaAvatar from './KovaAvatar';
+import type { KovaMood } from './KovaAvatar';
 
 interface Message {
   id: string;
@@ -17,9 +19,9 @@ interface Message {
 }
 
 /**
- * "Ask My Portfolio" floating chat widget.
+ * "Ask My Portfolio" floating chat widget with KOVA avatar.
+ * The floating trigger is KOVA itself — a geometric animated robot face.
  * Streams responses from /api/chat, styled to match editorial design.
- * Supports suggested question chips, markdown rendering, and keyboard nav.
  */
 export default function ChatWidget() {
   const isChatOpen = useAppStore((s) => s.isChatOpen);
@@ -27,6 +29,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [kovaMood, setKovaMood] = useState<KovaMood>('idle');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -38,7 +41,11 @@ export default function ChatWidget() {
   // Focus input when chat opens
   useEffect(() => {
     if (isChatOpen) {
+      setKovaMood('waving');
+      setTimeout(() => setKovaMood('listening'), 1500);
       setTimeout(() => inputRef.current?.focus(), 300);
+    } else {
+      setKovaMood('idle');
     }
   }, [isChatOpen]);
 
@@ -61,6 +68,7 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, userMessage, assistantMessage]);
     setInput('');
     setIsLoading(true);
+    setKovaMood('thinking');
 
     try {
       const response = await fetch('/api/chat', {
@@ -79,6 +87,8 @@ export default function ChatWidget() {
         throw new Error(err.error || 'Failed to get response');
       }
 
+      setKovaMood('talking');
+
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
 
@@ -96,7 +106,6 @@ export default function ChatWidget() {
             )
           );
         }
-        // Mark streaming as complete
         setMessages((prev) =>
           prev.map((m) =>
             m.id === assistantMessage.id
@@ -105,7 +114,7 @@ export default function ChatWidget() {
           )
         );
       }
-    } catch (error) {
+    } catch {
       setMessages((prev) =>
         prev.map((m) =>
           m.id === assistantMessage.id
@@ -119,6 +128,7 @@ export default function ChatWidget() {
       );
     } finally {
       setIsLoading(false);
+      setKovaMood('listening');
     }
   }, [isLoading, messages]);
 
@@ -129,23 +139,38 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Floating trigger button */}
-      <motion.button
-        onClick={toggleChat}
-        className={cn(
-          'fixed bottom-6 right-6 z-50 w-12 h-12 flex items-center justify-center',
-          'border border-border-primary bg-bg-card text-text-primary',
-          'hover:border-accent hover:text-accent transition-colors',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
-          isChatOpen && 'hidden'
+      {/* Floating KOVA trigger — replaces boring chat bubble */}
+      <AnimatePresence>
+        {!isChatOpen && (
+          <motion.div
+            className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-1"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+          >
+            {/* Floating label */}
+            <motion.span
+              className="font-mono text-[9px] text-text-muted tracking-[0.2em] uppercase"
+              animate={{ opacity: [0.4, 0.8, 0.4] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              KOVA
+            </motion.span>
+            {/* Avatar with bob animation */}
+            <motion.div
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <KovaAvatar
+                mood={kovaMood}
+                size={52}
+                onClick={toggleChat}
+              />
+            </motion.div>
+          </motion.div>
         )}
-        style={{ borderRadius: '50%' }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Open AI chat assistant"
-      >
-        <FiMessageCircle size={20} />
-      </motion.button>
+      </AnimatePresence>
 
       {/* Chat panel */}
       <AnimatePresence>
@@ -157,19 +182,27 @@ export default function ChatWidget() {
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-6rem)] flex flex-col bg-bg-card border border-border-primary shadow-lg"
             role="dialog"
-            aria-label="AI Portfolio Assistant"
+            aria-label="KOVA — AI Portfolio Assistant"
           >
-            {/* Header */}
+            {/* Header with KOVA mini avatar */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border-primary">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-success" />
-                <span className="font-mono text-xs text-text-secondary tracking-wide uppercase">
-                  Ask my portfolio
-                </span>
+              <div className="flex items-center gap-3">
+                <KovaAvatar mood={kovaMood} size={28} />
+                <div>
+                  <span className="font-mono text-xs text-text-primary tracking-wide uppercase font-bold">
+                    KOVA
+                  </span>
+                  <span className="block font-mono text-[9px] text-text-muted tracking-wider">
+                    {kovaMood === 'thinking' ? 'Thinking...' :
+                     kovaMood === 'talking' ? 'Responding...' :
+                     kovaMood === 'waving' ? 'Hey there!' :
+                     'Ask me anything'}
+                  </span>
+                </div>
               </div>
               <button
                 onClick={toggleChat}
-                className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors"
+                className="w-7 h-7 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
                 aria-label="Close chat"
               >
                 <FiX size={16} />
@@ -180,16 +213,19 @@ export default function ChatWidget() {
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4" data-lenis-prevent>
               {messages.length === 0 && (
                 <div className="space-y-4">
-                  <p className="text-text-secondary text-sm">
-                    Ask me anything about Raman&apos;s work, skills, or projects.
+                  <div className="flex justify-center py-4">
+                    <KovaAvatar mood="waving" size={64} />
+                  </div>
+                  <p className="text-text-secondary text-sm text-center">
+                    Hey! I&apos;m <span className="text-accent font-bold">KOVA</span>, Raman&apos;s portfolio assistant. Ask me about his work, skills, or projects.
                   </p>
                   {/* Suggested chips */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 justify-center">
                     {suggestedQuestions.map((q) => (
                       <button
                         key={q}
                         onClick={() => sendMessage(q)}
-                        className="text-xs px-3 py-1.5 border border-border-primary text-text-secondary hover:text-accent hover:border-accent transition-colors font-mono"
+                        className="text-xs px-3 py-1.5 border border-border-primary text-text-secondary hover:text-accent hover:border-accent transition-colors font-mono cursor-pointer"
                       >
                         {q}
                       </button>
@@ -214,8 +250,9 @@ export default function ChatWidget() {
                     </div>
                   )}
                   {message.role === 'assistant' && (
-                    <div className="font-mono text-[10px] text-text-muted mb-1 uppercase tracking-wider">
-                      Ralph.ai
+                    <div className="font-mono text-[10px] text-text-muted mb-1 uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="inline-block w-2 h-2 bg-accent" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+                      KOVA
                     </div>
                   )}
                   <div className="prose prose-sm prose-invert max-w-none [&_p]:m-0 [&_ul]:my-1 [&_li]:my-0">
@@ -241,7 +278,7 @@ export default function ChatWidget() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask something..."
+                  placeholder="Ask KOVA something..."
                   disabled={isLoading}
                   className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-muted focus:outline-none font-body"
                   aria-label="Chat message"
@@ -249,7 +286,7 @@ export default function ChatWidget() {
                 <button
                   type="submit"
                   disabled={isLoading || !input.trim()}
-                  className="w-8 h-8 flex items-center justify-center text-text-muted hover:text-accent disabled:opacity-30 transition-colors"
+                  className="w-8 h-8 flex items-center justify-center text-text-muted hover:text-accent disabled:opacity-30 transition-colors cursor-pointer"
                   aria-label="Send message"
                 >
                   {isLoading ? (
