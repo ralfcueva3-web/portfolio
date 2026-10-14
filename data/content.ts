@@ -396,7 +396,7 @@ export const contact = {
   email: 'cuevaralf432@gmail.com',
   socials: {
     github: 'https://github.com/ralfcueva3-web',
-    linkedin: 'www.linkedin.com/in/ayush-chakraborty-246358284',
+    linkedin: 'https://www.linkedin.com/in/ayush-chakraborty-246358284/',
     twitter: 'https://x.com/Kova486975',
   },
 };
@@ -433,7 +433,7 @@ export const commandPaletteActions = [
   { id: 'resume', label: 'Download résumé', section: 'Actions', shortcut: '', action: 'download', target: '/resume.pdf' },
   { id: 'resume-page', label: 'View résumé page', section: 'Navigate', shortcut: '', action: 'link', target: '/resume' },
   { id: 'github', label: 'Open GitHub', section: 'Links', shortcut: '', action: 'external', target: 'https://github.com/ralfcueva3-web' },
-  { id: 'linkedin', label: 'Open LinkedIn', section: 'Links', shortcut: '', action: 'external', target: 'www.linkedin.com/in/ayush-chakraborty-246358284' },
+  { id: 'linkedin', label: 'Open LinkedIn', section: 'Links', shortcut: '', action: 'external', target: 'https://www.linkedin.com/in/ayush-chakraborty-246358284/' },
 ];
 
 // ---- Resume Page ----
