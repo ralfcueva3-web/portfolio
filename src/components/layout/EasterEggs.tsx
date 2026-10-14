@@ -19,11 +19,11 @@ export default function EasterEggs() {
   useEffect(() => {
     // Console welcome message
     console.log(
-      '%c◆ Ralph.dev',
+      '%c◆ Kova.dev',
       'color: #ff4d00; font-size: 24px; font-weight: bold; font-family: monospace;'
     );
     console.log(
-      '%cYou found the console. Respect.\nBuilt with Next.js, Three.js, and an unreasonable amount of CSS variables.\n\nLooking at the source? Hire me → hello@ralph.dev',
+      '%cYou found the console. Respect.\nBuilt with Next.js, Three.js, and an unreasonable amount of CSS variables.\n\nLooking at the source? Hire me → hello@Kova.dev',
       'color: #9a9590; font-size: 12px; font-family: monospace; line-height: 1.6;'
     );
 
