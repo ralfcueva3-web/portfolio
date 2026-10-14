@@ -41,19 +41,19 @@ export default function Footer() {
       icon: FiGithub,
       href: contact.socials.github,
       label: 'GitHub',
-      handle: 'ralph',
+      handle: 'Kova',
     },
     {
       icon: FiLinkedin,
       href: contact.socials.linkedin,
       label: 'LinkedIn',
-      handle: 'raman-ralph',
+      handle: 'Ayush-Kova',
     },
     {
       icon: FiTwitter,
       href: contact.socials.twitter,
       label: 'Twitter',
-      handle: '@ralphdev',
+      handle: '@Kovadev',
     },
   ];
 
@@ -71,7 +71,7 @@ export default function Footer() {
                 className="inline-flex items-baseline font-display text-2xl font-bold tracking-tight text-text-primary hover:text-accent transition-colors"
                 aria-label={siteConfig.name}
               >
-                <span>Ralph</span>
+                <span>Kova</span>
                 <span className="font-mono text-accent text-lg">.dev</span>
               </a>
 
@@ -184,7 +184,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright notice & Back-to-top button */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="font-mono text-xs text-text-muted text-center sm:text-left">
-            © {year} Raman. Built with obsessive attention to detail.
+            © {year} Ayush. Built with obsessive attention to detail.
           </p>
 
           <button
