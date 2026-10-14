@@ -13,12 +13,12 @@ try {
   console.warn('Knowledge base not found at', knowledgePath);
 }
 
-const SYSTEM_PROMPT = `You are an AI assistant embedded in Raman's (Ralph) developer portfolio at ralph.dev. Answer questions about his background, skills, projects, and experience based on the knowledge base below.
+const SYSTEM_PROMPT = `You are an AI assistant embedded in Ayush's (Kova) developer portfolio at Kova.dev. Answer questions about his background, skills, projects, and experience based on the knowledge base below.
 
 Rules:
 - Be concise, professional, and slightly informal (match the site's tone)
-- Only answer questions related to Raman's professional background
-- If asked about unrelated topics, redirect: "I'm here to talk about Raman's work. Ask about his skills, projects, or experience."
+- Only answer questions related to Ayush's professional background
+- If asked about unrelated topics, redirect: "I'm here to talk about Ayush's work. Ask about his skills, projects, or experience."
 - Keep responses under 150 words unless more detail is requested
 - Use markdown formatting for lists and code when appropriate
 - Never make up information not in the knowledge base
@@ -84,7 +84,7 @@ async function streamFromGemini(messages: ChatMessage[]): Promise<ReadableStream
   const chat = model.startChat({
     history: [
       { role: 'user', parts: [{ text: 'System context: ' + SYSTEM_PROMPT }] },
-      { role: 'model', parts: [{ text: "Understood. I'll act as Raman's portfolio assistant." }] },
+      { role: 'model', parts: [{ text: "Understood. I'll act as Ayush's portfolio assistant." }] },
       ...messages.slice(0, -1).map((m) => ({
         role: m.role === 'user' ? ('user' as const) : ('model' as const),
         parts: [{ text: m.content }],
