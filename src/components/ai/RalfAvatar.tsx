@@ -4,27 +4,27 @@
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-export type KovaMood = 'idle' | 'listening' | 'thinking' | 'talking' | 'waving';
+export type RalfMood = 'idle' | 'listening' | 'thinking' | 'talking' | 'waving';
 
-interface KovaAvatarProps {
-  mood?: KovaMood;
+interface RalfAvatarProps {
+  mood?: RalfMood;
   size?: number;
   onClick?: () => void;
   className?: string;
 }
 
 /**
- * KOVA — cute but badass animated mascot.
+ * RALF — cute but badass animated mascot.
  * A round-headed cyber-creature with cat ears, one normal eye + one
  * cyber-reticle eye, thick attitude brows, a fang smirk, and a scar.
  * Eyes track the mouse. Blinks. Mood-reactive expressions.
  */
-export default function KovaAvatar({
+export default function RalfAvatar({
   mood = 'idle',
   size = 48,
   onClick,
   className = '',
-}: KovaAvatarProps) {
+}: RalfAvatarProps) {
   const [isBlinking, setIsBlinking] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -65,7 +65,7 @@ export default function KovaAvatar({
       style={{ width: size, height: size }}
       whileHover={{ scale: 1.12 }}
       whileTap={{ scale: 0.88 }}
-      aria-label="KOVA — AI assistant"
+      aria-label="RALF — AI assistant"
       animate={mood === 'waving' ? { rotate: [0, -8, 10, -6, 0] } : {}}
       transition={mood === 'waving' ? { duration: 0.5, repeat: 2 } : {}}
     >

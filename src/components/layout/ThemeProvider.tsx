@@ -16,7 +16,7 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
       defaultTheme="dark"
       enableSystem
       disableTransitionOnChange={false}
-      storageKey="kova-theme"
+      storageKey="ralf-theme"
     >
       {children}
     </NextThemesProvider>

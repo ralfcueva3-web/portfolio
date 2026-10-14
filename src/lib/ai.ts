@@ -13,7 +13,7 @@ try {
   console.warn('Knowledge base not found at', knowledgePath);
 }
 
-const SYSTEM_PROMPT = `You are an AI assistant embedded in Raman's (Kova) developer portfolio at kova.dev. Answer questions about his background, skills, projects, and experience based on the knowledge base below.
+const SYSTEM_PROMPT = `You are an AI assistant embedded in Ayush's (Ralf) developer portfolio at ralf.dev. Answer questions about his background, skills, projects, and experience based on the knowledge base below.
 
 Rules:
 - Be concise, professional, and slightly informal (match the site's tone)

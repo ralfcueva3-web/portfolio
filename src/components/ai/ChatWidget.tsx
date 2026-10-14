@@ -8,8 +8,8 @@ import { useAppStore } from '@/stores/app-store';
 import { suggestedQuestions } from '@/../../data/content';
 import ReactMarkdown from 'react-markdown';
 import { cn } from '@/lib/utils';
-import KovaAvatar from './KovaAvatar';
-import type { KovaMood } from './KovaAvatar';
+import RalfAvatar from './RalfAvatar';
+import type { RalfMood } from './RalfAvatar';
 
 interface Message {
   id: string;
@@ -19,8 +19,8 @@ interface Message {
 }
 
 /**
- * "Ask My Portfolio" floating chat widget with KOVA avatar.
- * The floating trigger is KOVA itself — a geometric animated robot face.
+ * "Ask My Portfolio" floating chat widget with RALF avatar.
+ * The floating trigger is RALF itself — a geometric animated robot face.
  * Streams responses from /api/chat, styled to match editorial design.
  */
 export default function ChatWidget() {
@@ -29,7 +29,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [kovaMood, setKovaMood] = useState<KovaMood>('idle');
+  const [ralfMood, setRalfMood] = useState<RalfMood>('idle');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -41,11 +41,11 @@ export default function ChatWidget() {
   // Focus input when chat opens
   useEffect(() => {
     if (isChatOpen) {
-      setKovaMood('waving');
-      setTimeout(() => setKovaMood('listening'), 1500);
+      setRalfMood('waving');
+      setTimeout(() => setRalfMood('listening'), 1500);
       setTimeout(() => inputRef.current?.focus(), 300);
     } else {
-      setKovaMood('idle');
+      setRalfMood('idle');
     }
   }, [isChatOpen]);
 
@@ -68,7 +68,7 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, userMessage, assistantMessage]);
     setInput('');
     setIsLoading(true);
-    setKovaMood('thinking');
+    setRalfMood('thinking');
 
     try {
       const response = await fetch('/api/chat', {
@@ -87,7 +87,7 @@ export default function ChatWidget() {
         throw new Error(err.error || 'Failed to get response');
       }
 
-      setKovaMood('talking');
+      setRalfMood('talking');
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
@@ -128,7 +128,7 @@ export default function ChatWidget() {
       );
     } finally {
       setIsLoading(false);
-      setKovaMood('listening');
+      setRalfMood('listening');
     }
   }, [isLoading, messages]);
 
@@ -139,7 +139,7 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Floating KOVA trigger — replaces boring chat bubble */}
+      {/* Floating RALF trigger — replaces boring chat bubble */}
       <AnimatePresence>
         {!isChatOpen && (
           <motion.div
@@ -155,15 +155,15 @@ export default function ChatWidget() {
               animate={{ opacity: [0.4, 0.8, 0.4] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              KOVA
+              RALF
             </motion.span>
             {/* Avatar with bob animation */}
             <motion.div
               animate={{ y: [0, -4, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <KovaAvatar
-                mood={kovaMood}
+              <RalfAvatar
+                mood={ralfMood}
                 size={52}
                 onClick={toggleChat}
               />
@@ -182,20 +182,20 @@ export default function ChatWidget() {
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-6rem)] flex flex-col bg-bg-card border border-border-primary shadow-lg"
             role="dialog"
-            aria-label="KOVA — AI Portfolio Assistant"
+            aria-label="RALF — AI Portfolio Assistant"
           >
-            {/* Header with KOVA mini avatar */}
+            {/* Header with RALF mini avatar */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border-primary">
               <div className="flex items-center gap-3">
-                <KovaAvatar mood={kovaMood} size={28} />
+                <RalfAvatar mood={ralfMood} size={28} />
                 <div>
                   <span className="font-mono text-xs text-text-primary tracking-wide uppercase font-bold">
-                    KOVA
+                    RALF
                   </span>
                   <span className="block font-mono text-[9px] text-text-muted tracking-wider">
-                    {kovaMood === 'thinking' ? 'Thinking...' :
-                     kovaMood === 'talking' ? 'Responding...' :
-                     kovaMood === 'waving' ? 'Hey there!' :
+                    {ralfMood === 'thinking' ? 'Thinking...' :
+                     ralfMood === 'talking' ? 'Responding...' :
+                     ralfMood === 'waving' ? 'Hey there!' :
                      'Ask me anything'}
                   </span>
                 </div>
@@ -214,10 +214,10 @@ export default function ChatWidget() {
               {messages.length === 0 && (
                 <div className="space-y-4">
                   <div className="flex justify-center py-4">
-                    <KovaAvatar mood="waving" size={64} />
+                    <RalfAvatar mood="waving" size={64} />
                   </div>
                   <p className="text-text-secondary text-sm text-center">
-                    Hey! I&apos;m <span className="text-accent font-bold">KOVA</span>, Ayush&apos;s portfolio assistant. Ask me about his work, skills, or projects.
+                    Hey! I&apos;m <span className="text-accent font-bold">RALF</span>, Ayush&apos;s portfolio assistant. Ask me about his work, skills, or projects.
                   </p>
                   {/* Suggested chips */}
                   <div className="flex flex-wrap gap-2 justify-center">
@@ -252,7 +252,7 @@ export default function ChatWidget() {
                   {message.role === 'assistant' && (
                     <div className="font-mono text-[10px] text-text-muted mb-1 uppercase tracking-wider flex items-center gap-1.5">
                       <span className="inline-block w-2 h-2 bg-accent" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
-                      KOVA
+                      RALF
                     </div>
                   )}
                   <div className="prose prose-sm prose-invert max-w-none [&_p]:m-0 [&_ul]:my-1 [&_li]:my-0">
@@ -278,7 +278,7 @@ export default function ChatWidget() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask KOVA something..."
+                  placeholder="Ask RALF something..."
                   disabled={isLoading}
                   className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-muted focus:outline-none font-body"
                   aria-label="Chat message"

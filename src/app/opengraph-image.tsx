@@ -86,7 +86,7 @@ export default function OpenGraphImage() {
                 color: '#f5f0ea',
               }}
             >
-              Ralph
+              Ralf
             </span>
             <span
               style={{
@@ -192,7 +192,7 @@ export default function OpenGraphImage() {
             }}
           >
             <div>Next.js 16 • TypeScript • React Three Fiber • AI Native</div>
-            <div style={{ color: '#f5f0ea', fontWeight: 600 }}>ralph.dev</div>
+            <div style={{ color: '#f5f0ea', fontWeight: 600 }}>ralf.dev</div>
           </div>
         </div>
       </div>

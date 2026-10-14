@@ -4,7 +4,7 @@ import ResumeContent from './ResumeContent';
 
 export const metadata: Metadata = {
   title: 'Résumé',
-  description: 'Raman\'s professional résumé — full-stack developer and AI engineer.',
+  description: 'Ayush\'s professional résumé — full-stack developer and AI engineer.',
 };
 
 /**

@@ -13,7 +13,7 @@ export interface LogoProps {
 }
 
 /**
- * Custom Ralph.dev brand logo mark.
+ * Custom Ralf.dev brand logo mark.
  * An original geometric monogram "R" paired with a signature developer accent dot (.).
  * Adapts to dark and light modes via `currentColor`, with the developer cue rendered in brand accent (#ff4d00).
  */
@@ -49,7 +49,7 @@ export default function Logo({ size = 28, className = '', animated = true }: Log
           hover: { x: 0.75, y: -0.5, transition: { type: 'spring', stiffness: 400, damping: 15 } },
         }}
       />
-      {/* Developer Cue: Signature Accent Dot (the . in Ralph.dev) */}
+      {/* Developer Cue: Signature Accent Dot (the . in Ralf.dev) */}
       <motion.rect
         x="23.5"
         y="23.5"
