@@ -23,7 +23,7 @@ export function generatePersonSchema() {
     },
     sameAs: [
       'https://github.com/ralfcueva3-web',
-      'www.linkedin.com/in/ayush-chakraborty-246358284',
+      'https://www.linkedin.com/in/ayush-chakraborty-246358284/',
       'https://x.com/Kova486975',
     ],
     knowsAbout: skills.categories.flatMap((c) =>

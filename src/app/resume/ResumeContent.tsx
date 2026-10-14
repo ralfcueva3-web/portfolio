@@ -72,7 +72,7 @@ export default function ResumeContent() {
             <a href="https://github.com/ralfcueva3-web" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
               <FiGithub size={14} />
             </a>
-            <a href="www.linkedin.com/in/ayush-chakraborty-246358284" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            <a href="https://www.linkedin.com/in/ayush-chakraborty-246358284/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
               <FiLinkedin size={14} />
             </a>
           </div>
