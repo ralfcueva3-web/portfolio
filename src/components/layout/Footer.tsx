@@ -186,7 +186,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright notice & Back-to-top button */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="font-mono text-xs text-text-muted text-center sm:text-left">
-            © {year} Raman. Built with obsessive attention to detail.
+            © {year} Ayush. Built with obsessive attention to detail.
           </p>
 
           <button
