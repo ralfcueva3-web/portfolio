@@ -2,7 +2,7 @@
 // ============================================
 // PORTFOLIO CONTENT — Single source of truth
 // Edit this file to update all site content.
-// Brand: Kova.dev | Raman, aka Kova
+// Brand: Kova.dev | Ayush, aka Kova
 // ============================================
 
 // ---- Type Definitions ----
@@ -57,7 +57,7 @@ export interface NavItem {
 
 export const siteConfig = {
   name: 'Kova.dev',
-  title: 'Raman — Full-Stack Developer & AI Engineer',
+  title: 'Ayush — Full-Stack Developer & AI Engineer',
   description:
     'Full-stack engineer building production systems with Next.js, TypeScript, and AI. Not another portfolio template.',
   url: 'https://Kova.dev',
@@ -255,21 +255,21 @@ export const testimonials: Testimonial[] = [
     name: 'Sarah Mitchell',
     role: 'VP of Engineering',
     company: 'TechVentures Inc.',
-    text: "Raman's ability to bridge AI and full-stack development is rare. He consistently delivers solutions that are technically excellent and ship on time.",
+    text: "Ayush's ability to bridge AI and full-stack development is rare. He consistently delivers solutions that are technically excellent and ship on time.",
     avatar: '/images/avatar-sarah.jpg',
   },
   {
     name: 'David Park',
     role: 'CTO',
     company: 'InnovateLab',
-    text: "Working with Raman transformed our product. His deep understanding of performance optimization helped us achieve metrics we didn't think were possible.",
+    text: "Working with Ayush transformed our product. His deep understanding of performance optimization helped us achieve metrics we didn't think were possible.",
     avatar: '/images/avatar-david.jpg',
   },
   {
     name: 'Emily Rodriguez',
     role: 'Product Designer',
     company: 'DigitalCraft Studio',
-    text: "Raman has an exceptional eye for design and motion. He brought our most ambitious creative concepts to life with flawless web experiences.",
+    text: "Ayush has an exceptional eye for design and motion. He brought our most ambitious creative concepts to life with flawless web experiences.",
     avatar: '/images/avatar-emily.jpg',
   },
 ];
@@ -283,7 +283,7 @@ export const contact = {
   email: 'hello@Kova.dev',
   socials: {
     github: 'https://github.com/Kova',
-    linkedin: 'https://linkedin.com/in/raman-Kova',
+    linkedin: 'https://linkedin.com/in/Ayush-Kova',
     twitter: 'https://twitter.com/Kovadev',
   },
 };
@@ -300,7 +300,7 @@ export const navigation: NavItem[] = [
 // ---- AI Chat Suggested Questions ----
 
 export const suggestedQuestions = [
-  "What's Raman's tech stack?",
+  "What's Ayush's tech stack?",
   'Tell me about his AI projects',
   'What has he built with Next.js?',
   'Is he available for hire?',
