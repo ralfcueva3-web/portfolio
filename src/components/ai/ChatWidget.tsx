@@ -217,7 +217,7 @@ export default function ChatWidget() {
                     <KovaAvatar mood="waving" size={64} />
                   </div>
                   <p className="text-text-secondary text-sm text-center">
-                    Hey! I&apos;m <span className="text-accent font-bold">KOVA</span>, Raman&apos;s portfolio assistant. Ask me about his work, skills, or projects.
+                    Hey! I&apos;m <span className="text-accent font-bold">KOVA</span>, Ayush&apos;s portfolio assistant. Ask me about his work, skills, or projects.
                   </p>
                   {/* Suggested chips */}
                   <div className="flex flex-wrap gap-2 justify-center">
