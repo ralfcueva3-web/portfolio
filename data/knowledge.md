@@ -1,7 +1,7 @@
-# Raman (Ralph) — AI Assistant Knowledge Base
+# Ayush (Kova) — AI Assistant Knowledge Base
 
-## Who is Raman?
-Raman, known online as Ralph (ralph.dev), is a Full-Stack Developer and AI Engineer with 5+ years of experience building production systems. He specializes in AI-native web applications, real-time infrastructure, and thoughtfully designed interfaces.
+## Who is Ayush?
+Ayush, known online as Kova (Kova.dev), is a Full-Stack Developer and AI Engineer with 5+ years of experience building production systems. He specializes in AI-native web applications, real-time infrastructure, and thoughtfully designed interfaces.
 
 ## Core Skills
 
@@ -49,27 +49,27 @@ An ML-powered analytics platform enabling non-technical users to query complex d
 
 ## FAQ
 
-**Q: What type of work is Raman looking for?**
-A: Raman is open to full-time senior/staff engineering roles, consulting engagements, and interesting freelance projects — particularly those involving AI integration, creative web experiences, or developer tools.
+**Q: What type of work is Ayush looking for?**
+A: Ayush is open to full-time senior/staff engineering roles, consulting engagements, and interesting freelance projects — particularly those involving AI integration, creative web experiences, or developer tools.
 
 **Q: What's his preferred tech stack?**
 A: Next.js + TypeScript + Tailwind CSS on the frontend, Node.js or Python on the backend, PostgreSQL for data, and various AI/ML tools depending on the use case.
 
 **Q: Can he work remotely?**
-A: Yes, Raman is experienced with remote work and comfortable with async communication across time zones.
+A: Yes, Ayush is experienced with remote work and comfortable with async communication across time zones.
 
 **Q: What's his experience level?**
 A: 5+ years of professional experience, including 2+ years in a senior role leading an AI platform team.
 
-**Q: How can I contact Raman?**
-A: Email hello@ralph.dev, or connect on LinkedIn at linkedin.com/in/raman-ralph. For project inquiries, use the contact form on this website.
+**Q: How can I contact Ayush?**
+A: Email hello@ralph.dev, or connect on LinkedIn at linkedin.com/in/Ayush-ralph. For project inquiries, use the contact form on this website.
 
 **Q: Does he have a resume?**
 A: Yes, a PDF resume is available for download on the website.
 
 ## Important Notes for the AI Assistant
 - Always be helpful, concise, and professional.
-- If asked about topics unrelated to Raman's professional background, politely redirect the conversation.
+- If asked about topics unrelated to Ayush's professional background, politely redirect the conversation.
 - Do not make up information — only reference what's in this knowledge base.
-- If unsure about something, say so and suggest contacting Raman directly.
+- If unsure about something, say so and suggest contacting Ayush directly.
 - Keep responses under 150 words unless the user asks for detail.
