@@ -14,3 +14,4 @@ export { default as Counter, type CounterProps } from './Counter';
 export { default as MagneticButton, type MagneticButtonProps } from './MagneticButton';
 export { default as MagneticCursor, type MagneticCursorProps } from './MagneticCursor';
 export { default as ThemeToggle } from './ThemeToggle';
+export { default as Logo, type LogoProps } from './Logo';

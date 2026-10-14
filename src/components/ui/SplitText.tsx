@@ -47,6 +47,17 @@ const reducedVariants = {
   },
 };
 
+const motionTags = {
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  p: motion.p,
+  span: motion.span,
+} as const;
+
 /**
  * Editorial Brutalist SplitText animation component.
  * Reveals individual words or characters with crisp upward motion.
@@ -64,8 +75,7 @@ export default function SplitText({
   const prefersReduced = useReducedMotion();
   const items = type === 'words' ? text.split(' ') : text.split('');
   const isHeading = typeof Tag === 'string' && Tag.startsWith('h');
-
-  const MotionTag = motion.create(Tag);
+  const MotionTag = (Tag in motionTags ? motionTags[Tag as keyof typeof motionTags] : motion.p) as typeof motion.p;
 
   return (
     <div ref={ref}>

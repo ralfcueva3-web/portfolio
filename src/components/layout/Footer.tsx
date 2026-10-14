@@ -7,6 +7,7 @@ import { contact, siteConfig, navigation, hero } from '@/../../data/content';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/stores/app-store';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import Logo from '@/components/ui/Logo';
 
 /**
  * Editorial Brutalist Site Footer.
@@ -20,14 +21,12 @@ import { useReducedMotion } from '@/hooks/useReducedMotion';
  * - Fully accessible social links and navigation
  */
 export default function Footer() {
-  const [year, setYear] = useState<number | string>(2026);
-  const setActiveSection = useAppStore((s) => s.setActiveSection);
-  const prefersReduced = useReducedMotion();
-
-  // Safely resolve client-side year to avoid Next.js 16 SSR/prerender mismatches
+  const [year, setYear] = useState(2026);
   useEffect(() => {
     setYear(new Date().getFullYear());
   }, []);
+  const setActiveSection = useAppStore((s) => s.setActiveSection);
+  const prefersReduced = useReducedMotion();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -41,19 +40,19 @@ export default function Footer() {
       icon: FiGithub,
       href: contact.socials.github,
       label: 'GitHub',
-      handle: 'ralph',
+      handle: 'kova',
     },
     {
       icon: FiLinkedin,
       href: contact.socials.linkedin,
       label: 'LinkedIn',
-      handle: 'raman-ralph',
+      handle: 'raman-kova',
     },
     {
       icon: FiTwitter,
       href: contact.socials.twitter,
       label: 'Twitter',
-      handle: '@ralphdev',
+      handle: '@kovadev',
     },
   ];
 
@@ -65,14 +64,17 @@ export default function Footer() {
           {/* Column 1: Brand + Tagline + Monospace Metadata */}
           <div className="flex flex-col justify-between">
             <div>
-              {/* Brand Logo without gradient */}
+              {/* Brand Logo with original monogram mark */}
               <a
                 href="#"
-                className="inline-flex items-baseline font-display text-2xl font-bold tracking-tight text-text-primary hover:text-accent transition-colors"
+                className="group inline-flex items-center gap-2.5 text-text-primary hover:text-accent transition-colors"
                 aria-label={siteConfig.name}
               >
-                <span>Ralph</span>
-                <span className="font-mono text-accent text-lg">.dev</span>
+                <Logo size={24} className="text-text-primary group-hover:text-accent transition-colors" />
+                <span className="flex items-baseline font-display text-2xl font-bold tracking-tight">
+                  <span>Ralph</span>
+                  <span className="font-mono text-accent text-lg">.dev</span>
+                </span>
               </a>
 
               <p className="text-text-secondary text-sm leading-relaxed mt-4 max-w-sm">
@@ -84,7 +86,7 @@ export default function Footer() {
             <div className="mt-8 pt-6 border-t border-border-secondary flex flex-col gap-2 font-mono text-xs text-text-muted">
               <div className="flex items-center gap-2">
                 <span className="text-accent" aria-hidden="true">
-                  //
+                  {'//'}
                 </span>
                 <span>
                   ORIGIN: {hero.location} [{hero.coordinates}]
@@ -92,7 +94,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-accent" aria-hidden="true">
-                  //
+                  {'//'}
                 </span>
                 <span className="text-text-secondary">
                   AVAILABILITY: {hero.status.toUpperCase()}

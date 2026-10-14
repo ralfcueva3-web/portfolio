@@ -1,4 +1,4 @@
-# Ralph.dev — Portfolio
+# Kova.dev — Portfolio
 
 A designer-built portfolio site with an editorial brutalist aesthetic. Not a template.
 

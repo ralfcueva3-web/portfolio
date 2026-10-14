@@ -9,7 +9,7 @@ All files created or edited during the editorial brutalist redesign:
 - `src/app/page.tsx` — Editorial hero + all sections assembled
 
 ## Data
-- `data/content.ts` — Identity → Raman/Ralph, rewrote all copy
+- `data/content.ts` — Identity → Raman/Kova, rewrote all copy
 - `data/knowledge.md` — AI knowledge base identity update
 
 ## Theme
@@ -50,7 +50,7 @@ All files created or edited during the editorial brutalist redesign:
 - `src/components/three/SkillsCloud.tsx` — Updated category colors
 
 ## AI Features
-- `src/lib/ai.ts` — System prompt → Raman/Ralph identity
+- `src/lib/ai.ts` — System prompt → Raman/Kova identity
 - `src/app/api/chat/route.ts` — Streaming chat endpoint (NEW)
 - `src/app/api/summarize/route.ts` — Project summarizer endpoint (NEW)
 - `src/components/ai/KovaAvatar.tsx` — KOVA animated geometric mascot with mouse-tracking eyes (NEW)
@@ -71,3 +71,20 @@ All files created or edited during the editorial brutalist redesign:
 - `src/components/sections/Contact.tsx` — Form fields stagger, social links animate, submit button micro-interaction
 - `src/components/three/SceneConfig.ts` — Killed white blob: dark rust secondary, reduced opacity/counts
 - `src/components/three/HeroScene.tsx` — Normal blending, accent-colored ambient particles, dimmed lights
+
+## Brand Identity & Favicon Suite
+- `src/components/ui/Logo.tsx` — Custom geometric monogram "R" SVG with signature developer accent dot (.) and hover animation (NEW)
+- `src/components/ui/index.ts` — Barrel export for `Logo` component
+- `src/components/layout/Navbar.tsx` — Integrated custom logo mark next to "Ralph.dev" wordmark
+- `src/components/layout/Footer.tsx` — Integrated custom logo mark next to "Ralph.dev" wordmark
+- `src/app/icon.svg` — Adaptive dark/light SVG icon via `prefers-color-scheme` (NEW)
+- `src/app/favicon.ico` — Multi-resolution favicon ICO with 16x16, 32x32, and 48x48 sizes (NEW)
+- `src/app/apple-icon.png` — 180x180 Apple touch icon with brand aesthetic (NEW)
+- `public/icon-192.png` — 192x192 PWA web app icon (NEW)
+- `public/icon-512.png` — 512x512 PWA web app icon (NEW)
+- `public/site.webmanifest` — PWA webmanifest with icons, theme colors, and metadata (NEW)
+- `src/app/opengraph-image.tsx` — Dynamic OG image generator via `next/og` (1200x630) with custom logo, "Ralph.dev", and role (NEW)
+- `src/app/layout.tsx` — Updated tab title "Ralph.dev | Full-Stack Developer & AI Engineer", template "%s | Ralph.dev", description, keywords, manifest, icons, and theme-color metadata
+- `data/content.ts` — Single source of truth for siteConfig name, role, title, description, and keywords
+- `src/app/robots.ts` & `src/app/sitemap.ts` — Grounded base URLs dynamically to siteConfig.url
+- Cleaned up unused default Next.js icons from `public/` (next.svg, vercel.svg, file.svg, globe.svg, window.svg)

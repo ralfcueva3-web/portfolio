@@ -136,6 +136,7 @@
   --animate-marquee: marquee 40s linear infinite;
   --animate-marquee-reverse: marquee-reverse 40s linear infinite;
   --animate-spin-slow: spin 30s linear infinite;
+  --animate-glitch: glitch 2s steps(20) infinite;
 
   @keyframes grain {
     0%, 100% { transform: translate(0, 0); }
@@ -158,6 +159,16 @@
   @keyframes marquee-reverse {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
+  }
+
+  @keyframes glitch {
+    0% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 0); }
+    5% { clip-path: inset(10% 0 85% 0); transform: translate(2px, 0); }
+    10% { clip-path: inset(80% 0 5% 0); transform: translate(-1px, 0); }
+    15% { clip-path: inset(25% 0 58% 0); transform: translate(0); }
+    20% { clip-path: inset(56% 0 31% 0); transform: translate(3px, 0); }
+    25% { clip-path: inset(0); transform: translate(0); }
+    100% { clip-path: inset(0); transform: translate(0); }
   }
 }
 

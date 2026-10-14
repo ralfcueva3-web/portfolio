@@ -1,7 +1,7 @@
-# Raman (Ralph) — AI Assistant Knowledge Base
+# Raman (Kova) — AI Assistant Knowledge Base
 
 ## Who is Raman?
-Raman, known online as Ralph (ralph.dev), is a Full-Stack Developer and AI Engineer with 5+ years of experience building production systems. He specializes in AI-native web applications, real-time infrastructure, and thoughtfully designed interfaces.
+Raman, known online as Kova (kova.dev), is a Full-Stack Developer and AI Engineer with 5+ years of experience building production systems. He specializes in AI-native web applications, real-time infrastructure, and thoughtfully designed interfaces.
 
 ## Core Skills
 
@@ -62,7 +62,7 @@ A: Yes, Raman is experienced with remote work and comfortable with async communi
 A: 5+ years of professional experience, including 2+ years in a senior role leading an AI platform team.
 
 **Q: How can I contact Raman?**
-A: Email hello@ralph.dev, or connect on LinkedIn at linkedin.com/in/raman-ralph. For project inquiries, use the contact form on this website.
+A: Email hello@kova.dev, or connect on LinkedIn at linkedin.com/in/raman-kova. For project inquiries, use the contact form on this website.
 
 **Q: Does he have a resume?**
 A: Yes, a PDF resume is available for download on the website.
