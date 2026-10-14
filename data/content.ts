@@ -393,11 +393,11 @@ export const contact = {
   title: "Let's work together",
   description:
     "Have something interesting to build? I'm always up for a conversation about AI, systems, or anything that ships.",
-  email: 'hello@ralf.dev',
+  email: 'cuevaralf432@gmail.com',
   socials: {
-    github: 'https://github.com/ralf',
-    linkedin: 'https://linkedin.com/in/ayush-ralf',
-    twitter: 'https://twitter.com/ralfdev',
+    github: 'https://github.com/ralfcueva3-web',
+    linkedin: 'www.linkedin.com/in/ayush-chakraborty-246358284',
+    twitter: 'https://x.com/Kova486975',
   },
 };
 
@@ -429,11 +429,11 @@ export const commandPaletteActions = [
   { id: 'now', label: 'Go to Now', section: 'Navigate', shortcut: '', action: 'navigate', target: '#now' },
   { id: 'theme', label: 'Toggle theme', section: 'Actions', shortcut: '', action: 'theme', target: '' },
   { id: 'chat', label: 'Open RALF chat', section: 'Actions', shortcut: '', action: 'chat', target: '' },
-  { id: 'email', label: 'Copy email address', section: 'Actions', shortcut: '', action: 'copy-email', target: 'hello@ralf.dev' },
+  { id: 'email', label: 'Copy email address', section: 'Actions', shortcut: '', action: 'copy-email', target: 'cuevaralf432@gmail.com' },
   { id: 'resume', label: 'Download résumé', section: 'Actions', shortcut: '', action: 'download', target: '/resume.pdf' },
   { id: 'resume-page', label: 'View résumé page', section: 'Navigate', shortcut: '', action: 'link', target: '/resume' },
-  { id: 'github', label: 'Open GitHub', section: 'Links', shortcut: '', action: 'external', target: 'https://github.com/ralf' },
-  { id: 'linkedin', label: 'Open LinkedIn', section: 'Links', shortcut: '', action: 'external', target: 'https://linkedin.com/in/ayush-ralf' },
+  { id: 'github', label: 'Open GitHub', section: 'Links', shortcut: '', action: 'external', target: 'https://github.com/ralfcueva3-web' },
+  { id: 'linkedin', label: 'Open LinkedIn', section: 'Links', shortcut: '', action: 'external', target: 'www.linkedin.com/in/ayush-chakraborty-246358284' },
 ];
 
 // ---- Resume Page ----
@@ -442,7 +442,7 @@ export const resumeData = {
   name: 'Ayush',
   alias: 'Ralf',
   title: 'Full-Stack Developer & AI Engineer',
-  email: 'hello@ralf.dev',
+  email: 'cuevaralf432@gmail.com',
   location: 'Kolkata, India',
   website: 'ralf.dev',
   summary: 'Full-stack engineer with 5+ years building production systems. Specialize in AI-native applications, real-time infrastructure, and interfaces that ship. Currently focused on LLM integration, RAG pipelines, and developer tooling.',

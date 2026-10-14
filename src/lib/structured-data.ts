@@ -15,16 +15,16 @@ export function generatePersonSchema() {
     image: `${siteConfig.url}/og-image.png`,
     jobTitle: 'Full-Stack Developer & AI Engineer',
     description: siteConfig.description,
-    email: 'hello@ralf.dev',
+    email: 'cuevaralf432@gmail.com',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Kolkata',
       addressCountry: 'IN',
     },
     sameAs: [
-      'https://github.com/ralf',
-      'https://linkedin.com/in/ayush-ralf',
-      'https://twitter.com/ralfdev',
+      'https://github.com/ralfcueva3-web',
+      'www.linkedin.com/in/ayush-chakraborty-246358284',
+      'https://x.com/Kova486975',
     ],
     knowsAbout: skills.categories.flatMap((c) =>
       c.items.map((s) => s.name)

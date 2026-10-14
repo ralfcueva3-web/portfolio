@@ -62,7 +62,7 @@ A: Yes, Ayush is experienced with remote work and comfortable with async communi
 A: 5+ years of professional experience, including 2+ years in a senior role leading an AI platform team.
 
 **Q: How can I contact Ayush?**
-A: Email hello@ralf.dev, or connect on LinkedIn at linkedin.com/in/ayush-ralf. For project inquiries, use the contact form on this website.
+A: Email cuevaralf432@gmail.com, or connect on LinkedIn at linkedin.com/in/ayush-ralf. For project inquiries, use the contact form on this website.
 
 **Q: Does he have a resume?**
 A: Yes, a PDF resume is available for download on the website.
