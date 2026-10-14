@@ -1,76 +1,71 @@
-// BUILT-BY: gemini-flash
+// BUILT-BY: opus-4.6
 'use client';
 
 import { experience } from '@/../../data/content';
-import GlassCard from '@/components/ui/GlassCard';
 import Badge from '@/components/ui/Badge';
-import { FiBriefcase, FiCalendar } from 'react-icons/fi';
 
 /**
- * Experience timeline section displaying professional career milestones,
- * roles, key contributions, and tech stacks.
+ * Experience section — horizontal table/grid layout.
+ * Each entry is a row: year | role + company | description | tech.
+ * Separated by hairline rules. More CV than fancy timeline.
  */
 export default function Experience() {
   return (
-    <section id="experience" className="section-padding relative overflow-hidden" aria-label="Work Experience">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-accent-start uppercase mb-3">
-            <span className="w-6 h-[1px] bg-accent-start inline-block" />
-            <span>03 // TRAJECTORY</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight">
-            Work Experience
-          </h2>
+    <section
+      id="experience"
+      className="section-padding relative"
+      aria-label="Work Experience"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section header */}
+        <div className="flex items-baseline gap-4 mb-12 md:mb-16">
+          <span className="section-index">04 / Experience</span>
+          <div className="rule flex-1" />
         </div>
 
-        {/* Timeline Container */}
-        <div className="relative border-l border-glass-border/80 ml-3 md:ml-6 space-y-10 md:space-y-12">
-          {experience.map((item, index) => (
-            <div key={`${item.company}-${item.year}`} className="relative pl-6 md:pl-10 group">
-              {/* Timeline Indicator Dot */}
-              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-bg-primary border-2 border-accent-start group-hover:border-accent-end group-hover:scale-125 transition-all duration-300 flex items-center justify-center">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent-end opacity-75 group-hover:opacity-100" />
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter text-text-primary mb-16">
+          Where I&apos;ve worked
+        </h2>
+
+        {/* Experience entries */}
+        <div className="border-t border-border-primary">
+          {experience.map((item) => (
+            <div
+              key={`${item.company}-${item.year}`}
+              className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 md:py-10 border-b border-border-primary group hover:bg-surface-hover transition-colors -mx-4 px-4"
+            >
+              {/* Year */}
+              <div className="md:col-span-2">
+                <span className="font-mono text-xs text-text-muted tracking-wider">
+                  {item.year}
+                </span>
               </div>
 
-              {/* Experience Card */}
-              <GlassCard
-                glow={false}
-                hover={true}
-                className="p-6 md:p-8 bg-bg-card/70 border-glass-border hover:border-accent-start/40 transition-all duration-300"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                  <div className="flex items-center gap-2">
-                    <FiBriefcase className="text-accent-start shrink-0" size={16} />
-                    <h3 className="text-lg md:text-xl font-display font-bold text-text-primary">
-                      {item.role}
-                    </h3>
-                    <span className="text-text-muted font-normal">@</span>
-                    <span className="text-sm md:text-base font-semibold text-accent-end">
-                      {item.company}
-                    </span>
-                  </div>
+              {/* Role + Company */}
+              <div className="md:col-span-3">
+                <h3 className="text-base md:text-lg font-display font-bold text-text-primary leading-tight">
+                  {item.role}
+                </h3>
+                <span className="text-sm text-accent font-medium">
+                  {item.company}
+                </span>
+              </div>
 
-                  <div className="inline-flex items-center gap-1.5 text-xs font-mono text-text-secondary bg-white/5 px-3 py-1 rounded-full border border-glass-border shrink-0 self-start sm:self-auto">
-                    <FiCalendar size={13} className="text-text-muted" />
-                    <span>{item.year}</span>
-                  </div>
-                </div>
-
-                <p className="text-sm md:text-base text-text-secondary leading-relaxed font-body mb-5">
+              {/* Description */}
+              <div className="md:col-span-4">
+                <p className="text-sm text-text-secondary leading-relaxed">
                   {item.description}
                 </p>
+              </div>
 
-                {/* Technologies Stack Tags */}
-                <div className="flex flex-wrap gap-2 pt-2 border-t border-glass-border/60">
-                  {item.technologies.map((tech) => (
-                    <Badge key={tech} variant="default" className="text-xs font-mono">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </GlassCard>
+              {/* Technologies */}
+              <div className="md:col-span-3 flex flex-wrap gap-1.5 content-start">
+                {item.technologies.map((tech) => (
+                  <Badge key={tech} variant="default">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
             </div>
           ))}
         </div>

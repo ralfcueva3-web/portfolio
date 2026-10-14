@@ -1,23 +1,28 @@
+// BUILT-BY: opus-4.6
 'use client';
 
 import { useRef, type ReactNode } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { cn } from '@/lib/utils';
 
 export interface TiltCardProps {
   children: ReactNode;
   className?: string;
   maxRotation?: number;
+  perspective?: number;
 }
 
 /**
- * Card with 3D perspective tilt effect following mouse position.
- * Smoothly interpolates angles with Framer Motion springs and respects prefers-reduced-motion.
+ * 3D perspective tilt card component.
+ * Follows mouse position with physics springs while respecting user motion preferences.
+ * Styled with editorial brutalist design tokens.
  */
 export default function TiltCard({
   children,
   className = '',
   maxRotation = 10,
+  perspective = 1000,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -52,9 +57,9 @@ export default function TiltCard({
       style={{
         rotateX: prefersReducedMotion ? 0 : rotateX,
         rotateY: prefersReducedMotion ? 0 : rotateY,
-        transformPerspective: 1000,
+        transformPerspective: perspective,
       }}
-      className={`will-change-transform ${className}`}
+      className={cn('will-change-transform relative', className)}
     >
       {children}
     </motion.div>

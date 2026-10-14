@@ -1,108 +1,91 @@
-// BUILT-BY: gemini-flash
+// BUILT-BY: opus-4.6
 'use client';
 
 import { about } from '@/../../data/content';
-import GlassCard from '@/components/ui/GlassCard';
 import Counter from '@/components/ui/Counter';
-import Button from '@/components/ui/Button';
-import { FiDownload, FiArrowRight, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowRight, FiDownload } from 'react-icons/fi';
 
 /**
- * About section presenting the developer bio, career highlights,
- * animated metric counters, and a resume download CTA.
+ * About section — asymmetric 2-column layout.
+ * Left: large bio text. Right: stats in a 2×2 grid with hairline borders.
+ * No glassmorphism cards. Editorial feel with monospace labels.
  */
 export default function About() {
   return (
-    <section id="about" className="section-padding relative overflow-hidden" aria-label="About Me">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-accent-start uppercase mb-3">
-            <span className="w-6 h-[1px] bg-accent-start inline-block" />
-            <span>01 // BACKGROUND</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight">
-            {about.title}
-          </h2>
+    <section
+      id="about"
+      className="section-padding relative"
+      aria-label="About Me"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section header with index */}
+        <div className="flex items-baseline gap-4 mb-12 md:mb-16">
+          <span className="section-index">01 / About</span>
+          <div className="rule flex-1" />
         </div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Bio text column */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="space-y-5 text-base md:text-lg text-text-secondary leading-relaxed font-body">
+        {/* Asymmetric 2-column grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Left column — bio */}
+          <div className="lg:col-span-7 space-y-6">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter text-text-primary leading-[0.95]">
+              {about.title}
+            </h2>
+
+            <div className="space-y-5 text-base md:text-lg text-text-secondary leading-relaxed">
               {about.paragraphs.map((paragraph, index) => (
-                <p key={index} className="transition-opacity">
-                  {paragraph}
-                </p>
+                <p key={index}>{paragraph}</p>
               ))}
             </div>
 
-            {/* Core Competencies highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-glass-border">
-              {[
-                'Full-Stack System Architecture',
-                'Production AI & RAG Pipelines',
-                'Performance & Web Vitals Obsessed',
-                'Creative 3D & Modern Interactions',
-              ].map((highlight, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 text-sm text-text-primary">
-                  <FiCheckCircle className="text-accent-end shrink-0" size={16} />
-                  <span>{highlight}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-6">
-              <Button
-                as="a"
+            {/* CTAs — text links, not gradient buttons */}
+            <div className="flex flex-wrap items-center gap-6 pt-4">
+              <a
                 href={about.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="primary"
-                size="md"
+                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-text-primary hover:text-accent transition-colors link-underline"
               >
-                <FiDownload size={16} />
-                <span>Download Resume</span>
-              </Button>
-              <Button
-                as="a"
+                <FiDownload size={14} />
+                <span>Download résumé</span>
+              </a>
+              <a
                 href="#contact"
-                variant="secondary"
-                size="md"
+                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-text-secondary hover:text-accent transition-colors link-underline"
               >
-                <span>Get in Touch</span>
-                <FiArrowRight size={16} />
-              </Button>
+                <span>Get in touch</span>
+                <FiArrowRight size={14} />
+              </a>
             </div>
           </div>
 
-          {/* Stats and Achievements column */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4 md:gap-5">
-            {about.stats.map((stat, i) => (
-              <GlassCard
-                key={stat.label}
-                glow={false}
-                hover={true}
-                className="p-6 md:p-8 flex flex-col justify-between border-glass-border/80 hover:border-accent-start/40 bg-bg-card/70"
-              >
-                <div className="text-3xl md:text-5xl font-display font-bold text-text-primary mb-2 flex items-baseline">
-                  <Counter
-                    target={stat.value}
-                    suffix={stat.label.includes('Stars') || stat.label.includes('Projects') ? '+' : '+'}
-                  />
+          {/* Right column — stats with hairline grid */}
+          <div className="lg:col-span-5">
+            <div className="grid grid-cols-2 border border-border-primary">
+              {about.stats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={`p-6 md:p-8 ${
+                    i % 2 === 0 ? 'border-r border-border-primary' : ''
+                  } ${i < 2 ? 'border-b border-border-primary' : ''}`}
+                >
+                  <div className="text-3xl md:text-4xl font-display font-bold text-text-primary tabular-nums">
+                    <Counter
+                      target={stat.value}
+                      suffix="+"
+                    />
+                  </div>
+                  <div className="mt-2 font-mono text-[11px] text-text-muted uppercase tracking-wider">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-xs md:text-sm font-medium text-text-muted uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </GlassCard>
-            ))}
+              ))}
+            </div>
 
-            {/* Philosophy quote badge */}
-            <div className="col-span-2 mt-2 p-5 rounded-2xl border border-glass-border bg-bg-tertiary/40 backdrop-blur-md">
-              <p className="text-sm italic text-text-secondary leading-snug">
-                &ldquo;Great digital craft is the convergence of robust engineering, intuitive ergonomics, and aesthetic intentionality.&rdquo;
+            {/* Pull quote */}
+            <div className="mt-6 pl-4 border-l-2 border-accent">
+              <p className="text-sm italic text-text-secondary leading-relaxed">
+                &ldquo;Ship, then iterate. Working software beats perfect plans.&rdquo;
               </p>
             </div>
           </div>

@@ -1,38 +1,54 @@
-// BUILT-BY: gemini-flash
+// BUILT-BY: opus-4.6
 'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { navigation, siteConfig } from '@/../../data/content';
+import { navigation, siteConfig, contact } from '@/../../data/content';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/stores/app-store';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 /**
- * Global navigation header featuring blur-on-scroll background,
- * desktop navigation links with magnetic hover effect and animated active indicator,
- * and a full-screen mobile menu overlay with staggered animations.
+ * Editorial Brutalist Navigation Bar.
+ *
+ * Features:
+ * - Brand logo: "Ralph" in display bold + ".dev" in mono orange accent
+ * - Monospace letter-spaced desktop navigation with orange accent underline indicator
+ * - Minimal text/underlined link for contact (no gradient CTA button)
+ * - Backdrop blur and hairline border on scroll
+ * - Integrated theme toggle switch
+ * - Accessible keyboard navigation and skip-to-content link
+ * - Full-screen mobile overlay with large editorial type, index numbers, and staggered entrance
+ * - Escape key dismissal and background body scroll lock
  */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const activeSection = useAppStore((s) => s.activeSection);
+  const setActiveSection = useAppStore((s) => s.setActiveSection);
+  const prefersReduced = useReducedMotion();
 
+  // Track scroll position for backdrop blur and bottom border
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background scrolling when mobile menu is open
+  // Lock body scroll when mobile overlay is active
   useEffect(() => {
     if (mobileOpen) {
+      const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [mobileOpen]);
 
   // Close mobile menu on Escape key press
@@ -42,145 +58,217 @@ export default function Navbar() {
         setMobileOpen(false);
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mobileOpen]);
 
+  const handleNavClick = (sectionId: string) => {
+    setActiveSection(sectionId);
+    if (mobileOpen) {
+      setMobileOpen(false);
+    }
+  };
+
   return (
     <>
-      <a href="#main" className="skip-to-content">
+      {/* Accessible skip link */}
+      <a href="#main" className="skip-to-content font-mono text-xs">
         Skip to content
       </a>
+
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 transition-colors duration-200',
           scrolled
-            ? 'bg-bg-primary/80 backdrop-blur-xl border-b border-glass-border'
-            : 'bg-transparent'
+            ? 'bg-bg-primary/90 backdrop-blur-md border-b border-border-primary'
+            : 'bg-transparent border-b border-transparent'
         )}
       >
-        <nav
-          className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between"
-          aria-label="Main navigation"
-        >
-          {/* Logo */}
+        <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+          {/* Logo — Editorial brutalist typography without gradients */}
           <a
             href="#"
-            className="font-display text-xl font-bold text-text-primary hover:text-accent-start transition-colors"
+            className="flex items-baseline font-display text-xl md:text-2xl font-bold tracking-tight text-text-primary hover:text-accent transition-colors"
             aria-label={siteConfig.name}
           >
-            {siteConfig.name.split(' ')[0]}
-            <span className="gradient-text">.dev</span>
+            <span>Ralph</span>
+            <span className="font-mono text-accent text-base md:text-lg">.dev</span>
           </a>
 
-          {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-8" role="list">
-            {navigation.map((item) => (
-              <li key={item.href}>
-                <motion.a
-                  href={item.href}
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
-                  className={cn(
-                    'text-sm font-medium transition-colors duration-200 relative group inline-block py-1',
-                    activeSection === item.href.slice(1)
-                      ? 'text-text-primary'
-                      : 'text-text-secondary hover:text-text-primary'
-                  )}
-                >
-                  {item.label}
-                  <span
-                    className={cn(
-                      'absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-accent-start to-accent-end transition-all duration-300',
-                      activeSection === item.href.slice(1)
-                        ? 'w-full'
-                        : 'w-0 group-hover:w-full'
-                    )}
-                  />
-                </motion.a>
-              </li>
-            ))}
-          </ul>
+          {/* Desktop Navigation Links */}
+          <nav aria-label="Main navigation" className="hidden md:block">
+            <ul className="flex items-center gap-8" role="list">
+              {navigation.map((item) => {
+                const sectionId = item.href.replace('#', '');
+                const isActive = activeSection === sectionId;
 
-          {/* CTA + Mobile toggle */}
-          <div className="flex items-center gap-4">
+                return (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      onClick={() => handleNavClick(sectionId)}
+                      className={cn(
+                        'font-mono text-xs uppercase tracking-widest transition-colors duration-200 relative py-1 inline-block group',
+                        isActive
+                          ? 'text-text-primary font-medium'
+                          : 'text-text-secondary hover:text-text-primary'
+                      )}
+                    >
+                      {item.label}
+                      {/* Active state orange accent underline */}
+                      {isActive ? (
+                        <motion.span
+                          layoutId="navbar-active-indicator"
+                          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent"
+                          transition={
+                            prefersReduced
+                              ? { duration: 0 }
+                              : { type: 'spring', stiffness: 380, damping: 30 }
+                          }
+                        />
+                      ) : (
+                        <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent transition-all duration-200 group-hover:w-full" />
+                      )}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Right actions: ThemeToggle + Minimal Contact CTA + Mobile Menu Button */}
+          <div className="flex items-center gap-4 md:gap-6">
+            <ThemeToggle />
+
+            {/* Minimal contact link for desktop — no gradient pill */}
             <a
               href="#contact"
-              className="hidden md:inline-flex px-5 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-accent-start to-accent-end text-white hover:opacity-90 transition-opacity"
+              onClick={() => handleNavClick('contact')}
+              className={cn(
+                'hidden md:inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-200 py-1 link-underline',
+                activeSection === 'contact'
+                  ? 'text-accent'
+                  : 'text-text-primary hover:text-accent'
+              )}
             >
-              Contact
+              <span>Get in touch</span>
+              <span className="text-accent text-sm leading-none" aria-hidden="true">
+                ↗
+              </span>
             </a>
+
+            {/* Mobile hamburger toggle button */}
             <button
-              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-start rounded-md"
+              type="button"
+              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-text-primary hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
+              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileOpen}
             >
               <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.25 }}
-                className="w-6 h-0.5 bg-text-primary block origin-center"
+                animate={mobileOpen ? { rotate: 45, y: 7.5 } : { rotate: 0, y: 0 }}
+                transition={prefersReduced ? { duration: 0 } : { duration: 0.2 }}
+                className="w-6 h-[2px] bg-current block origin-center"
               />
               <motion.span
                 animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                className="w-6 h-0.5 bg-text-primary block"
+                transition={prefersReduced ? { duration: 0 } : { duration: 0.15 }}
+                className="w-6 h-[2px] bg-current block"
               />
               <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.25 }}
-                className="w-6 h-0.5 bg-text-primary block origin-center"
+                animate={mobileOpen ? { rotate: -45, y: -7.5 } : { rotate: 0, y: 0 }}
+                transition={prefersReduced ? { duration: 0 } : { duration: 0.2 }}
+                className="w-6 h-[2px] bg-current block origin-center"
               />
             </button>
           </div>
-        </nav>
+        </div>
       </header>
 
-      {/* Mobile overlay */}
+      {/* Full-screen Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={prefersReduced ? { opacity: 1 } : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-bg-primary/95 backdrop-blur-xl flex items-center justify-center md:hidden"
+            exit={prefersReduced ? { opacity: 0 } : { opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-bg-primary/98 backdrop-blur-xl md:hidden flex flex-col justify-between pt-20 pb-8 px-6"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site Navigation"
           >
-            <nav aria-label="Mobile navigation">
-              <ul className="flex flex-col items-center gap-8">
-                {navigation.map((item, i) => (
-                  <motion.li
-                    key={item.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ delay: i * 0.1, duration: 0.4 }}
-                  >
-                    <a
-                      href={item.href}
-                      className="text-3xl font-display font-bold text-text-primary hover:text-accent-start transition-colors"
-                      onClick={() => setMobileOpen(false)}
+            {/* Navigation links with staggered animation and large editorial typography */}
+            <nav className="mt-8">
+              <ul className="flex flex-col divide-y divide-border-secondary border-y border-border-secondary">
+                {navigation.map((item, index) => {
+                  const sectionId = item.href.replace('#', '');
+                  const isActive = activeSection === sectionId;
+
+                  return (
+                    <motion.li
+                      key={item.href}
+                      initial={prefersReduced ? {} : { opacity: 0, x: -24 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={prefersReduced ? {} : { opacity: 0, x: -16 }}
+                      transition={{
+                        delay: prefersReduced ? 0 : index * 0.08,
+                        duration: prefersReduced ? 0 : 0.35,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                     >
-                      {item.label}
-                    </a>
-                  </motion.li>
-                ))}
-                <motion.li
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ delay: navigation.length * 0.1, duration: 0.4 }}
-                >
-                  <a
-                    href="#contact"
-                    className="mt-4 inline-flex px-8 py-3 rounded-full text-base font-medium bg-gradient-to-r from-accent-start to-accent-end text-white hover:opacity-90 transition-opacity"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Contact
-                  </a>
-                </motion.li>
+                      <a
+                        href={item.href}
+                        onClick={() => handleNavClick(sectionId)}
+                        className={cn(
+                          'flex items-baseline justify-between py-5 group transition-colors',
+                          isActive ? 'text-accent' : 'text-text-primary hover:text-accent'
+                        )}
+                      >
+                        <div className="flex items-baseline gap-4">
+                          <span className="font-mono text-xs text-accent">
+                            0{index + 1} //
+                          </span>
+                          <span className="font-display text-3xl font-bold tracking-tight">
+                            {item.label}
+                          </span>
+                        </div>
+                        <span className="font-mono text-xs text-text-muted group-hover:text-accent transition-colors">
+                          ↗
+                        </span>
+                      </a>
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
+
+            {/* Mobile drawer footer metadata */}
+            <motion.div
+              initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={prefersReduced ? {} : { opacity: 0, y: 16 }}
+              transition={{
+                delay: prefersReduced ? 0 : navigation.length * 0.08,
+                duration: prefersReduced ? 0 : 0.35,
+              }}
+              className="pt-6 border-t border-border-primary flex flex-col gap-3 font-mono text-xs text-text-muted"
+            >
+              <div className="flex items-center justify-between text-text-secondary">
+                <span>INQUIRIES</span>
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="text-text-primary hover:text-accent transition-colors"
+                >
+                  {contact.email}
+                </a>
+              </div>
+              <div className="flex items-center justify-between text-text-muted text-[11px]">
+                <span>STATUS</span>
+                <span className="text-text-secondary">AVAILABLE FOR WORK</span>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

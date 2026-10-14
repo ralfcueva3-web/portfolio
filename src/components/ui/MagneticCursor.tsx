@@ -1,35 +1,42 @@
+// BUILT-BY: opus-4.6
 'use client';
 
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useAppStore } from '@/stores/app-store';
+import { cn } from '@/lib/utils';
+
+export interface MagneticCursorProps {
+  className?: string;
+}
 
 /**
- * Custom magnetic cursor with an outer trailing ring and inner dot.
- * Follows mouse movement with spring physics via Framer Motion.
- * Dynamically scales up and displays contextual labels according to `cursorVariant`.
- * Automatically hidden on touch devices and during server-side rendering.
+ * Editorial Brutalist Custom Cursor.
+ * Thin 1px outer hairline ring with mix-blend-difference and crisp monospace text support.
+ * Smooth spring physics with full SSR hydration safety and touch-device detection.
  */
-export default function MagneticCursor() {
+export default function MagneticCursor({ className }: MagneticCursorProps = {}) {
   const [mounted, setMounted] = useState(false);
   const cursorVariant = useAppStore((s) => s.cursorVariant);
   const cursorText = useAppStore((s) => s.cursorText);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { stiffness: 300, damping: 28, mass: 0.5 };
+  const springConfig = { stiffness: 320, damping: 28, mass: 0.5 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 
   useEffect(() => {
     setMounted(true);
 
-    // Hide on touch devices
+    // Hide custom cursor on touch/pointer-coarse devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
+
     window.addEventListener('mousemove', move, { passive: true });
     document.body.style.cursor = 'none';
 
@@ -39,34 +46,37 @@ export default function MagneticCursor() {
     };
   }, [mouseX, mouseY]);
 
-  // Hide during SSR and before client-side hydration
+  // Prevent SSR hydration mismatch
   if (!mounted) return null;
 
-  // Hide on touch devices
+  // Touch devices use system cursor
   if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
     return null;
   }
 
-  const variants = {
+  const ringVariants = {
     default: { width: 32, height: 32, opacity: 1 },
     hover: { width: 56, height: 56, opacity: 0.8 },
-    text: { width: 80, height: 80, opacity: 0.9 },
+    text: { width: 84, height: 84, opacity: 0.9 },
     hidden: { width: 0, height: 0, opacity: 0 },
   };
 
   return (
     <>
-      {/* Outer trailing ring */}
+      {/* Outer trailing hairline ring */}
       <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
+        className={cn(
+          'fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference',
+          className,
+        )}
         style={{ x, y, translateX: '-50%', translateY: '-50%' }}
         animate={cursorVariant}
-        variants={variants}
-        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+        variants={ringVariants}
+        transition={{ type: 'spring', stiffness: 320, damping: 28 }}
       >
-        <div className="w-full h-full rounded-full border border-white/80 flex items-center justify-center">
+        <div className="w-full h-full rounded-full border border-text-primary flex items-center justify-center p-1">
           {cursorVariant === 'text' && (
-            <span className="text-white text-[10px] font-medium tracking-wide">
+            <span className="text-text-primary text-[10px] font-mono font-medium tracking-widest uppercase select-none text-center">
               {cursorText}
             </span>
           )}
@@ -75,7 +85,7 @@ export default function MagneticCursor() {
 
       {/* Inner dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white z-[9999] pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-text-primary z-[9999] pointer-events-none mix-blend-difference"
         style={{ x: mouseX, y: mouseY, translateX: '-50%', translateY: '-50%' }}
         animate={{ opacity: cursorVariant === 'hidden' ? 0 : 1 }}
       />

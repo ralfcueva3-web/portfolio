@@ -1,6 +1,8 @@
+// BUILT-BY: opus-4.6
 // ============================================
 // PORTFOLIO CONTENT — Single source of truth
 // Edit this file to update all site content.
+// Brand: Ralph.dev | Raman, aka Ralph
 // ============================================
 
 // ---- Type Definitions ----
@@ -27,6 +29,7 @@ export interface Project {
   image: string;
   video: string | null;
   featured: boolean;
+  year: string;
 }
 
 export interface TimelineEntry {
@@ -53,47 +56,46 @@ export interface NavItem {
 // ---- Site Configuration ----
 
 export const siteConfig = {
-  name: 'Alex Chen',
-  title: 'Alex Chen — Full-Stack Developer & AI Engineer',
+  name: 'Ralph.dev',
+  title: 'Raman — Full-Stack Developer & AI Engineer',
   description:
-    'Full-Stack Developer and AI Engineer crafting exceptional digital experiences with modern web technologies, 3D graphics, and artificial intelligence.',
-  url: 'https://alexchen.dev',
+    'Full-stack engineer building production systems with Next.js, TypeScript, and AI. Not another portfolio template.',
+  url: 'https://ralph.dev',
   ogImage: '/og-image.png',
 };
 
 // ---- Hero Section ----
 
 export const hero = {
-  greeting: "Hello, I'm",
-  name: 'Alex Chen',
-  roles: [
-    'Full-Stack Developer',
-    'AI Engineer',
-    'Creative Technologist',
-    'Open Source Contributor',
-  ],
+  // No generic "Hello, I'm" — editorial hero copy
+  nameTop: 'Raman',
+  nameBottom: 'aka Ralph',
+  descriptor: 'Full-Stack Developer & AI Engineer',
   tagline:
-    'I build digital experiences that live at the intersection of design, engineering, and artificial intelligence.',
+    'I build systems that ship — not slide decks. Currently focused on AI-native web apps, real-time infra, and interfaces that feel like they were designed by someone who actually uses them.',
+  location: 'Kolkata, IN',
+  coordinates: '22.5726° N, 88.3639° E',
+  status: 'Available for work',
   cta: {
-    primary: 'View My Work',
-    secondary: "Let's Talk",
+    primary: 'Selected work ↓',
+    secondary: 'Get in touch',
   },
 };
 
 // ---- About Section ----
 
 export const about = {
-  title: 'About Me',
+  title: 'Background',
   paragraphs: [
-    "I'm a full-stack developer and AI engineer with 5+ years of experience building production applications that scale. My passion lies in creating seamless user experiences powered by intelligent systems.",
-    'From architecting microservices to training machine learning models, I bridge the gap between complex backend systems and beautiful frontend interfaces. I believe the best products are built when engineering excellence meets thoughtful design.',
-    "When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, or exploring the latest advances in generative AI.",
+    "I'm a full-stack developer who got into this because I wanted to build things that actually work, not because someone told me it was a good career. Five years in, that hasn't changed.",
+    "My days split between architecting backends that don't fall over at 3 AM and building frontends that don't make designers wince. I've shipped RAG pipelines, real-time collaborative tools, and enough CRUD apps to know when not to build another one.",
+    "I think most developer portfolios are boring. So I tried to make this one slightly less boring. You're welcome.",
   ],
   stats: [
-    { label: 'Years Experience', value: 5 },
-    { label: 'Projects Completed', value: 30 },
-    { label: 'GitHub Stars', value: 2400 },
-    { label: 'Articles Written', value: 15 },
+    { label: 'Years shipping code', value: 5 },
+    { label: 'Production projects', value: 30 },
+    { label: 'GitHub stars', value: 2400 },
+    { label: 'Technical articles', value: 15 },
   ],
   resumeUrl: '/resume.pdf',
 };
@@ -101,7 +103,7 @@ export const about = {
 // ---- Skills Section ----
 
 export const skills = {
-  title: 'Skills & Technologies',
+  title: 'Capabilities',
   categories: [
     {
       name: 'Frontend',
@@ -151,57 +153,61 @@ export const projects: Project[] = [
     id: 'neuralchat',
     title: 'NeuralChat',
     description:
-      'AI-powered conversational platform with real-time streaming and multi-model support.',
+      'Conversational AI platform with real-time streaming and multi-model support.',
     longDescription:
       'A full-stack conversational AI platform that supports multiple LLM providers, real-time streaming responses, conversation history, and an intelligent RAG pipeline. Built with a focus on sub-200ms latency and enterprise-grade reliability.',
     stack: ['Next.js', 'TypeScript', 'Groq', 'LangChain', 'PostgreSQL', 'Redis', 'Docker'],
     liveUrl: 'https://neuralchat.demo.dev',
-    githubUrl: 'https://github.com/alexchen/neuralchat',
+    githubUrl: 'https://github.com/ralph/neuralchat',
     image: '/images/project-neuralchat.jpg',
     video: null,
     featured: true,
+    year: '2024',
   },
   {
     id: 'devflow',
     title: 'DevFlow',
     description:
-      'Developer productivity dashboard with AI-powered code review and analytics.',
+      'Developer productivity dashboard with AI code review and analytics.',
     longDescription:
       'An intelligent developer dashboard that aggregates GitHub activity, automates code reviews with GPT-4, tracks sprint velocity, and surfaces actionable productivity insights. Features real-time collaboration and Slack integration.',
     stack: ['React', 'Node.js', 'MongoDB', 'OpenAI', 'GraphQL', 'WebSockets'],
     liveUrl: 'https://devflow.demo.dev',
-    githubUrl: 'https://github.com/alexchen/devflow',
+    githubUrl: 'https://github.com/ralph/devflow',
     image: '/images/project-devflow.jpg',
     video: null,
     featured: true,
+    year: '2023',
   },
   {
     id: 'pixelforge',
     title: 'PixelForge',
     description:
-      'Real-time collaborative design tool with WebGL rendering and version control.',
+      'Real-time collaborative design tool with WebGL rendering.',
     longDescription:
       'A browser-based design tool supporting real-time multi-user collaboration, WebGL-accelerated canvas rendering, layer management, and Git-like version control for design files. Supports exporting to Figma and SVG formats.',
     stack: ['Next.js', 'Three.js', 'Y.js', 'PostgreSQL', 'AWS S3', 'WebRTC'],
     liveUrl: 'https://pixelforge.demo.dev',
-    githubUrl: 'https://github.com/alexchen/pixelforge',
+    githubUrl: 'https://github.com/ralph/pixelforge',
     image: '/images/project-pixelforge.jpg',
     video: null,
     featured: false,
+    year: '2023',
   },
   {
     id: 'datalens',
     title: 'DataLens',
     description:
-      'ML-powered data analytics platform with natural language querying.',
+      'ML-powered analytics platform with natural language querying.',
     longDescription:
       'An analytics platform that lets non-technical users query complex datasets using natural language. Features automated data visualization, anomaly detection, and scheduled report generation powered by fine-tuned transformer models.',
     stack: ['Python', 'FastAPI', 'React', 'PyTorch', 'PostgreSQL', 'Docker', 'Kubernetes'],
     liveUrl: 'https://datalens.demo.dev',
-    githubUrl: 'https://github.com/alexchen/datalens',
+    githubUrl: 'https://github.com/ralph/datalens',
     image: '/images/project-datalens.jpg',
     video: null,
     featured: false,
+    year: '2022',
   },
 ];
 
@@ -213,7 +219,7 @@ export const experience: TimelineEntry[] = [
     role: 'Senior Software Engineer',
     company: 'TechVentures Inc.',
     description:
-      'Leading the AI platform team building next-generation developer tools. Architected a RAG-based code assistant serving 50K+ developers with sub-200ms latency.',
+      'Leading the AI platform team. Architected a RAG-based code assistant serving 50K+ developers with sub-200ms latency. Rewrote the deployment pipeline, cutting release cycles from 2 days to 40 minutes.',
     technologies: ['Next.js', 'Python', 'LangChain', 'Kubernetes', 'PostgreSQL'],
   },
   {
@@ -221,7 +227,7 @@ export const experience: TimelineEntry[] = [
     role: 'Full-Stack Developer',
     company: 'InnovateLab',
     description:
-      'Built and shipped 12+ production features for a B2B SaaS platform serving Fortune 500 clients. Reduced page load times by 60% through strategic code splitting and edge caching.',
+      'Shipped 12+ production features for a B2B SaaS platform serving Fortune 500 clients. Reduced page load times by 60% through code splitting and edge caching. Built the real-time notification system from scratch.',
     technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'MongoDB'],
   },
   {
@@ -229,7 +235,7 @@ export const experience: TimelineEntry[] = [
     role: 'Frontend Engineer',
     company: 'DigitalCraft Studio',
     description:
-      'Developed interactive web experiences and 3D product configurators for luxury brands. Implemented WebGL-based animations achieving 60fps on mobile devices.',
+      'Developed interactive web experiences and 3D product configurators for luxury brands. Implemented WebGL animations achieving 60fps on mobile devices.',
     technologies: ['Three.js', 'React', 'GSAP', 'Tailwind CSS', 'Figma'],
   },
   {
@@ -237,7 +243,7 @@ export const experience: TimelineEntry[] = [
     role: 'Junior Developer',
     company: 'StartupXYZ',
     description:
-      'First engineering hire at an early-stage startup. Built the entire frontend from scratch and helped scale the product from 0 to 10K users.',
+      'First engineering hire. Built the frontend from scratch and helped scale the product from 0 to 10K users. Learned more in 2 years than most people learn in 5.',
     technologies: ['React', 'Node.js', 'MongoDB', 'Firebase', 'Heroku'],
   },
 ];
@@ -249,21 +255,21 @@ export const testimonials: Testimonial[] = [
     name: 'Sarah Mitchell',
     role: 'VP of Engineering',
     company: 'TechVentures Inc.',
-    text: "Alex is one of the most talented engineers I've worked with. His ability to bridge AI and full-stack development is rare and incredibly valuable. He consistently delivers solutions that are both technically excellent and beautifully crafted.",
+    text: "Raman's ability to bridge AI and full-stack development is rare. He consistently delivers solutions that are technically excellent and ship on time.",
     avatar: '/images/avatar-sarah.jpg',
   },
   {
     name: 'David Park',
     role: 'CTO',
     company: 'InnovateLab',
-    text: "Working with Alex transformed our product. His deep understanding of performance optimization and modern web architecture helped us achieve metrics we didn't think were possible. A true 10x engineer.",
+    text: "Working with Raman transformed our product. His deep understanding of performance optimization helped us achieve metrics we didn't think were possible.",
     avatar: '/images/avatar-david.jpg',
   },
   {
     name: 'Emily Rodriguez',
     role: 'Product Designer',
     company: 'DigitalCraft Studio',
-    text: "Alex has an exceptional eye for design and motion. He brought our most ambitious creative concepts to life with flawless 3D web experiences. Collaborating with him was an absolute pleasure.",
+    text: "Raman has an exceptional eye for design and motion. He brought our most ambitious creative concepts to life with flawless web experiences.",
     avatar: '/images/avatar-emily.jpg',
   },
 ];
@@ -271,14 +277,14 @@ export const testimonials: Testimonial[] = [
 // ---- Contact ----
 
 export const contact = {
-  title: "Let's Build Something Amazing",
+  title: "Let's work together",
   description:
-    "Have a project in mind or just want to chat? I'm always open to discussing new opportunities and ideas.",
-  email: 'hello@alexchen.dev',
+    "Have something interesting to build? I'm always up for a conversation about AI, systems, or anything that ships.",
+  email: 'hello@ralph.dev',
   socials: {
-    github: 'https://github.com/alexchen',
-    linkedin: 'https://linkedin.com/in/alexchen',
-    twitter: 'https://twitter.com/alexchendev',
+    github: 'https://github.com/ralph',
+    linkedin: 'https://linkedin.com/in/raman-ralph',
+    twitter: 'https://twitter.com/ralphdev',
   },
 };
 
@@ -286,8 +292,7 @@ export const contact = {
 
 export const navigation: NavItem[] = [
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'Work', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -295,8 +300,8 @@ export const navigation: NavItem[] = [
 // ---- AI Chat Suggested Questions ----
 
 export const suggestedQuestions = [
-  'What technologies does Alex specialize in?',
+  "What's Raman's tech stack?",
   'Tell me about his AI projects',
-  'What is his experience with React and Next.js?',
-  'How can I hire Alex for a project?',
+  'What has he built with Next.js?',
+  'Is he available for hire?',
 ];

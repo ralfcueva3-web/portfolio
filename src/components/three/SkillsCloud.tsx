@@ -1,3 +1,4 @@
+// BUILT-BY: opus-4.6
 'use client';
 
 import { Suspense, useMemo, useRef, useEffect } from 'react';
@@ -33,10 +34,10 @@ export function SkillNodes({ categories }: SkillNodesProps) {
 
   const categoryColors: Record<string, string> = useMemo(
     () => ({
-      Frontend: '#7c3aed',
-      Backend: '#06b6d4',
-      'AI / ML': '#f59e0b',
-      DevOps: '#10b981',
+      Frontend: '#ff4d00',
+      Backend: '#e8e4de',
+      'AI / ML': '#ff7a33',
+      DevOps: '#9a9590',
     }),
     []
   );
@@ -82,7 +83,7 @@ export function SkillNodes({ categories }: SkillNodesProps) {
 
           if (dist < cfg.radius * 1.5) {
             linePos.push(x1, y1, z1, x2, y2, z2);
-            const hex = categoryColors[nodes[i].category] || '#7c3aed';
+            const hex = categoryColors[nodes[i].category] || '#ff4d00';
             const col = new THREE.Color(hex);
             lineColors.push(col.r, col.g, col.b, col.r, col.g, col.b);
           }
@@ -126,7 +127,7 @@ export function SkillNodes({ categories }: SkillNodesProps) {
       )}
 
       {nodes.map((node) => {
-        const color = categoryColors[node.category] || '#7c3aed';
+        const color = categoryColors[node.category] || '#ff4d00';
         return (
           <Billboard
             key={`${node.category}-${node.name}`}

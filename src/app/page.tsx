@@ -1,61 +1,148 @@
-// BUILT-BY: gemini-flash
+// BUILT-BY: opus-4.6
+import { hero } from '@/../../data/content';
 import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
+import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import Contact from '@/components/sections/Contact';
-import Button from '@/components/ui/Button';
-import { hero } from '@/../../data/content';
-import { FiArrowDown, FiMail } from 'react-icons/fi';
+import Marquee from '@/components/ui/Marquee';
+import ChatWidget from '@/components/ai/ChatWidget';
+import HeroSceneWrapper from '@/components/three/HeroSceneWrapper';
+import EasterEggs from '@/components/layout/EasterEggs';
 
 /**
- * Home page assembling the core sections:
- * Hero introduction, About, Skills, Experience, and Contact.
+ * Home page — editorial brutalist layout.
+ * Oversized typographic hero with integrated 3D, then distinct sections.
  */
 export default function Home() {
   return (
     <div className="flex flex-col w-full">
-      {/* Hero Introduction Section */}
+      {/* ===== HERO ===== */}
       <section
         id="hero"
-        className="min-h-[90vh] flex flex-col justify-center items-center text-center px-6 relative pt-24 md:pt-32 pb-16"
+        className="relative min-h-screen flex flex-col justify-end pb-12 md:pb-16 pt-24"
         aria-label="Introduction"
       >
-        <div className="max-w-4xl mx-auto flex flex-col items-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-glass-border bg-bg-card/80 text-xs font-mono text-accent-end">
-            <span className="w-2 h-2 rounded-full bg-accent-start animate-pulse" />
-            <span>{hero.greeting}</span>
+        {/* 3D Background — behind everything */}
+        <div className="absolute inset-0 opacity-40 pointer-events-none">
+          <HeroSceneWrapper />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+          {/* Top metadata bar */}
+          <div className="flex items-center justify-between mb-8 md:mb-12">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-success" />
+              </span>
+              <span className="font-mono text-xs text-text-secondary uppercase tracking-wider">
+                {hero.status}
+              </span>
+            </div>
+            <span className="font-mono text-xs text-text-muted tracking-wider hidden sm:block">
+              {hero.coordinates}
+            </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-text-primary">
-            {hero.name}
-          </h1>
+          {/* Main hero typography — oversized, editorial */}
+          <div className="space-y-4">
+            <h1 className="text-[clamp(3rem,12vw,10rem)] font-display font-bold leading-[0.9] tracking-tighter text-text-primary">
+              {hero.nameTop}
+              <br />
+              <span className="text-accent italic font-light">
+                {hero.nameBottom}
+              </span>
+            </h1>
 
-          <p className="text-xl sm:text-2xl md:text-3xl font-display font-medium gradient-text">
-            {hero.roles.join(' • ')}
-          </p>
+            <div className="max-w-xl space-y-4 pt-4">
+              <p className="font-mono text-xs text-accent uppercase tracking-widest">
+                {hero.descriptor}
+              </p>
+              <p className="text-text-secondary text-base md:text-lg leading-relaxed">
+                {hero.tagline}
+              </p>
+            </div>
 
-          <p className="max-w-2xl text-base sm:text-lg text-text-secondary leading-relaxed font-body">
-            {hero.tagline}
-          </p>
+            {/* Hero CTAs */}
+            <div className="flex items-center gap-8 pt-6">
+              <a
+                href="#projects"
+                className="font-mono text-xs uppercase tracking-widest text-text-primary hover:text-accent transition-colors link-underline"
+              >
+                {hero.cta.primary}
+              </a>
+              <a
+                href="#contact"
+                className="font-mono text-xs uppercase tracking-widest text-text-muted hover:text-accent transition-colors link-underline"
+              >
+                {hero.cta.secondary}
+              </a>
+            </div>
+          </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <Button as="a" href="#about" variant="primary" size="lg">
-              <span>{hero.cta.primary}</span>
-              <FiArrowDown size={16} />
-            </Button>
-            <Button as="a" href="#contact" variant="secondary" size="lg">
-              <FiMail size={16} />
-              <span>{hero.cta.secondary}</span>
-            </Button>
+          {/* Bottom metadata */}
+          <div className="mt-12 md:mt-16 flex items-end justify-between">
+            <span className="font-mono text-[11px] text-text-muted tracking-wider">
+              {hero.location}
+            </span>
+            <span className="font-mono text-[11px] text-text-muted tracking-wider">
+              SCROLL ↓
+            </span>
           </div>
         </div>
       </section>
 
-      {/* Main Content Sections */}
+      {/* ===== MARQUEE DIVIDER ===== */}
+      <div className="border-y border-border-primary py-3 bg-bg-secondary">
+        <Marquee speed="slow">
+          <span className="font-mono text-xs text-text-muted tracking-widest uppercase px-8">
+            Full-Stack Development
+          </span>
+          <span className="text-accent px-4">◆</span>
+          <span className="font-mono text-xs text-text-muted tracking-widest uppercase px-8">
+            AI Engineering
+          </span>
+          <span className="text-accent px-4">◆</span>
+          <span className="font-mono text-xs text-text-muted tracking-widest uppercase px-8">
+            System Architecture
+          </span>
+          <span className="text-accent px-4">◆</span>
+          <span className="font-mono text-xs text-text-muted tracking-widest uppercase px-8">
+            React &amp; Next.js
+          </span>
+          <span className="text-accent px-4">◆</span>
+          <span className="font-mono text-xs text-text-muted tracking-widest uppercase px-8">
+            Three.js &amp; WebGL
+          </span>
+          <span className="text-accent px-4">◆</span>
+        </Marquee>
+      </div>
+
+      {/* ===== SECTIONS ===== */}
       <About />
+
+      <div className="rule max-w-7xl mx-auto px-6 w-full" />
+
       <Skills />
+
+      <div className="rule max-w-7xl mx-auto px-6 w-full" />
+
+      <Projects />
+
+      <div className="rule max-w-7xl mx-auto px-6 w-full" />
+
       <Experience />
+
+      <div className="rule max-w-7xl mx-auto px-6 w-full" />
+
       <Contact />
+
+      {/* ===== EASTER EGGS ===== */}
+      <EasterEggs />
+
+      {/* ===== AI CHAT WIDGET ===== */}
+      <ChatWidget />
     </div>
   );
 }

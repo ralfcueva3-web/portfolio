@@ -1,3 +1,4 @@
+// BUILT-BY: opus-4.6
 import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 
@@ -11,7 +12,7 @@ export interface MarqueeProps {
 
 /**
  * Infinite horizontal scrolling marquee.
- * Duplicates children to render a seamless loop and optionally pauses on mouse hover.
+ * Seamless looping with editorial brutalist styling and aria-hidden for screen readers.
  */
 export default function Marquee({
   children,
@@ -28,10 +29,13 @@ export default function Marquee({
   const duration = speedMap[speed];
 
   return (
-    <div className={cn('overflow-hidden', pauseOnHover && 'group', className)} aria-hidden="true">
+    <div
+      className={cn('w-full overflow-hidden select-none', pauseOnHover && 'group', className)}
+      aria-hidden="true"
+    >
       <div
         className={cn(
-          'flex gap-8 w-max',
+          'flex gap-8 w-max items-center',
           reverse ? 'animate-marquee-reverse' : 'animate-marquee',
           pauseOnHover && 'group-hover:[animation-play-state:paused]',
         )}

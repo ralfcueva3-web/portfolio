@@ -1,3 +1,4 @@
+// BUILT-BY: opus-4.6
 import Groq from 'groq-sdk';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
@@ -12,12 +13,12 @@ try {
   console.warn('Knowledge base not found at', knowledgePath);
 }
 
-const SYSTEM_PROMPT = `You are an AI assistant embedded in Alex Chen's developer portfolio website. Your role is to answer questions about Alex's background, skills, projects, and experience based on the knowledge base below.
+const SYSTEM_PROMPT = `You are an AI assistant embedded in Raman's (Ralph) developer portfolio at ralph.dev. Answer questions about his background, skills, projects, and experience based on the knowledge base below.
 
 Rules:
-- Be concise, professional, and friendly
-- Only answer questions related to Alex's professional background
-- If asked about unrelated topics, politely redirect: "I'm here to help you learn about Alex's work. Feel free to ask about his skills, projects, or experience!"
+- Be concise, professional, and slightly informal (match the site's tone)
+- Only answer questions related to Raman's professional background
+- If asked about unrelated topics, redirect: "I'm here to talk about Raman's work. Ask about his skills, projects, or experience."
 - Keep responses under 150 words unless more detail is requested
 - Use markdown formatting for lists and code when appropriate
 - Never make up information not in the knowledge base
@@ -40,7 +41,6 @@ export interface ChatMessage {
  * Returns a ReadableStream of text chunks.
  */
 export async function streamChat(messages: ChatMessage[]): Promise<ReadableStream<string>> {
-  // Try Groq first
   if (groqClient) {
     try {
       return await streamFromGroq(messages);
@@ -49,7 +49,6 @@ export async function streamChat(messages: ChatMessage[]): Promise<ReadableStrea
     }
   }
 
-  // Fallback to Gemini
   if (geminiClient) {
     return await streamFromGemini(messages);
   }
@@ -85,7 +84,7 @@ async function streamFromGemini(messages: ChatMessage[]): Promise<ReadableStream
   const chat = model.startChat({
     history: [
       { role: 'user', parts: [{ text: 'System context: ' + SYSTEM_PROMPT }] },
-      { role: 'model', parts: [{ text: "Understood. I will act as Alex Chen's portfolio assistant." }] },
+      { role: 'model', parts: [{ text: "Understood. I'll act as Raman's portfolio assistant." }] },
       ...messages.slice(0, -1).map((m) => ({
         role: m.role === 'user' ? ('user' as const) : ('model' as const),
         parts: [{ text: m.content }],
@@ -109,21 +108,22 @@ async function streamFromGemini(messages: ChatMessage[]): Promise<ReadableStream
 
 /**
  * Generate a project summary tailored to a specific audience role.
- *
- * @param projectId - The unique identifier of the project.
- * @param role - Target audience role: recruiter, engineer, or founder.
- * @returns An audience-tailored summary string.
  */
-export async function generateSummary(projectId: string, role: 'recruiter' | 'engineer' | 'founder'): Promise<string> {
-  // Find project in knowledge base content (look for projects array in content.ts instead)
+export async function generateSummary(
+  projectId: string,
+  role: 'recruiter' | 'engineer' | 'founder'
+): Promise<string> {
   const { projects } = await import('../../data/content');
   const project = projects.find((p) => p.id === projectId);
   if (!project) throw new Error(`Project ${projectId} not found`);
 
   const rolePrompts: Record<string, string> = {
-    recruiter: 'Explain this project to a technical recruiter. Focus on the impact, scale, and technologies used. Keep it to 2-3 sentences.',
-    engineer: 'Explain this project to a senior software engineer. Focus on architecture decisions, technical challenges, and interesting implementation details. Keep it to 3-4 sentences.',
-    founder: 'Explain this project to a startup founder. Focus on the business value, user impact, and how this demonstrates product thinking. Keep it to 2-3 sentences.',
+    recruiter:
+      'Explain this project to a technical recruiter. Focus on impact, scale, and technologies. 2-3 sentences.',
+    engineer:
+      'Explain this project to a senior engineer. Focus on architecture, technical challenges, and implementation. 3-4 sentences.',
+    founder:
+      'Explain this project to a startup founder. Focus on business value, user impact, and product thinking. 2-3 sentences.',
   };
 
   const prompt = `${rolePrompts[role]}\n\nProject: ${project.title}\nDescription: ${project.longDescription}\nTech Stack: ${project.stack.join(', ')}`;

@@ -1,12 +1,15 @@
+// BUILT-BY: opus-4.6
 'use client';
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { cn } from '@/lib/utils';
 
 export interface SplitTextProps {
   text: string;
   className?: string;
-  as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   type?: 'words' | 'chars';
   stagger?: number;
   delay?: number;
@@ -23,22 +26,31 @@ const containerVariants = {
   }),
 };
 
+// Editorial Brutalist: sharp, clean translation without blur filters
 const itemVariants = {
-  hidden: { y: '110%', opacity: 0, filter: 'blur(4px)' },
+  hidden: { y: '110%', opacity: 0 },
   visible: {
     y: '0%',
     opacity: 1,
-    filter: 'blur(0px)',
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
     },
   },
 };
 
+const reducedVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.3 },
+  },
+};
+
 /**
- * Splits text into individual word or character spans and reveals them
- * with a staggered blur and slide-up animation when scrolled into view.
+ * Editorial Brutalist SplitText animation component.
+ * Reveals individual words or characters with crisp upward motion.
+ * Headings automatically get the font-display class.
  */
 export default function SplitText({
   text,
@@ -49,14 +61,20 @@ export default function SplitText({
   delay = 0,
 }: SplitTextProps) {
   const { ref, isInView } = useInView<HTMLDivElement>();
+  const prefersReduced = useReducedMotion();
   const items = type === 'words' ? text.split(' ') : text.split('');
+  const isHeading = typeof Tag === 'string' && Tag.startsWith('h');
 
   const MotionTag = motion.create(Tag);
 
   return (
     <div ref={ref}>
       <MotionTag
-        className={`flex flex-wrap gap-x-[0.3em] overflow-hidden ${className}`}
+        className={cn(
+          'flex flex-wrap gap-x-[0.3em] overflow-hidden leading-tight',
+          isHeading && 'font-display font-bold tracking-tight text-text-primary',
+          className,
+        )}
         variants={containerVariants}
         custom={{ delay, stagger }}
         initial="hidden"
@@ -64,7 +82,10 @@ export default function SplitText({
       >
         {items.map((item, i) => (
           <span key={i} className="inline-block overflow-hidden">
-            <motion.span variants={itemVariants} className="inline-block">
+            <motion.span
+              variants={prefersReduced ? reducedVariants : itemVariants}
+              className="inline-block"
+            >
               {item === ' ' ? '\u00A0' : item}
             </motion.span>
           </span>

@@ -1,8 +1,11 @@
+// BUILT-BY: opus-4.6
 'use client';
 
 import { useRef, type ReactNode } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useAppStore } from '@/stores/app-store';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { cn } from '@/lib/utils';
 
 export interface MagneticButtonProps {
   children: ReactNode;
@@ -11,11 +14,16 @@ export interface MagneticButtonProps {
   href?: string;
   onClick?: () => void;
   magneticStrength?: number;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  target?: string;
+  rel?: string;
 }
 
 /**
- * A button wrapper component that magnetically pulls toward the cursor within a radius.
- * Uses Framer Motion springs for physical feedback and updates the global cursor state.
+ * Editorial Brutalist Magnetic Button.
+ * Attracts toward cursor with spring physics and integrates with global cursor state.
+ * Respects prefers-reduced-motion.
  */
 export default function MagneticButton({
   children,
@@ -24,16 +32,22 @@ export default function MagneticButton({
   href,
   onClick,
   magneticStrength = 0.35,
+  disabled = false,
+  type = 'button',
+  target,
+  rel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const setCursorVariant = useAppStore((s) => s.setCursorVariant);
+  const prefersReduced = useReducedMotion();
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
   const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (prefersReduced || disabled || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -47,23 +61,41 @@ export default function MagneticButton({
     setCursorVariant('default');
   };
 
+  const handleMouseEnter = () => {
+    if (!disabled) {
+      setCursorVariant('hover');
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onMouseEnter={() => setCursorVariant('hover')}
-      style={{ x: springX, y: springY }}
+      onMouseEnter={handleMouseEnter}
+      style={{ x: prefersReduced ? 0 : springX, y: prefersReduced ? 0 : springY }}
       className="inline-block"
     >
       {as === 'a' ? (
-        <motion.a className={className} href={href} onClick={onClick}>
+        <a
+          className={cn('inline-block', className)}
+          href={href}
+          onClick={onClick}
+          target={target}
+          rel={rel}
+          aria-disabled={disabled}
+        >
           {children}
-        </motion.a>
+        </a>
       ) : (
-        <motion.button className={className} onClick={onClick} type="button">
+        <button
+          className={cn('inline-block', className)}
+          onClick={onClick}
+          type={type}
+          disabled={disabled}
+        >
           {children}
-        </motion.button>
+        </button>
       )}
     </motion.div>
   );

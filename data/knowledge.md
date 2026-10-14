@@ -1,7 +1,7 @@
-# Alex Chen — AI Assistant Knowledge Base
+# Raman (Ralph) — AI Assistant Knowledge Base
 
-## Who is Alex Chen?
-Alex Chen is a Full-Stack Developer and AI Engineer with 5+ years of experience building production applications. He specializes in creating digital experiences at the intersection of modern web technologies, 3D graphics, and artificial intelligence.
+## Who is Raman?
+Raman, known online as Ralph (ralph.dev), is a Full-Stack Developer and AI Engineer with 5+ years of experience building production systems. He specializes in AI-native web applications, real-time infrastructure, and thoughtfully designed interfaces.
 
 ## Core Skills
 
@@ -42,34 +42,34 @@ A browser-based real-time collaborative design tool with WebGL-accelerated canva
 An ML-powered analytics platform enabling non-technical users to query complex datasets using natural language. Features automated data visualization, anomaly detection, and scheduled report generation. Powered by fine-tuned transformer models. Built with Python, FastAPI, React, PyTorch, and PostgreSQL.
 
 ## Work Philosophy
-- **Quality over speed**: Writes clean, well-tested, documented code that lasts.
+- **Ship, then iterate**: Working software beats perfect plans.
 - **User-first**: Every technical decision starts with the user experience.
 - **Continuous learning**: Stays current with the latest in AI, web standards, and developer tools.
-- **Open source**: Believes in giving back to the community through open-source contributions and technical writing.
+- **Open source**: Believes in giving back to the community through contributions and technical writing.
 
 ## FAQ
 
-**Q: What type of work is Alex looking for?**
-A: Alex is open to full-time senior/staff engineering roles, consulting engagements, and interesting freelance projects — particularly those involving AI integration, creative web experiences, or developer tools.
+**Q: What type of work is Raman looking for?**
+A: Raman is open to full-time senior/staff engineering roles, consulting engagements, and interesting freelance projects — particularly those involving AI integration, creative web experiences, or developer tools.
 
-**Q: What's Alex's preferred tech stack?**
+**Q: What's his preferred tech stack?**
 A: Next.js + TypeScript + Tailwind CSS on the frontend, Node.js or Python on the backend, PostgreSQL for data, and various AI/ML tools depending on the use case.
 
-**Q: Can Alex work remotely?**
-A: Yes, Alex is experienced with remote work and comfortable with async communication across time zones.
+**Q: Can he work remotely?**
+A: Yes, Raman is experienced with remote work and comfortable with async communication across time zones.
 
-**Q: What's Alex's experience level?**
+**Q: What's his experience level?**
 A: 5+ years of professional experience, including 2+ years in a senior role leading an AI platform team.
 
-**Q: How can I contact Alex?**
-A: Email hello@alexchen.dev, or connect on LinkedIn at linkedin.com/in/alexchen. For project inquiries, use the contact form on this website.
+**Q: How can I contact Raman?**
+A: Email hello@ralph.dev, or connect on LinkedIn at linkedin.com/in/raman-ralph. For project inquiries, use the contact form on this website.
 
-**Q: Does Alex have a resume?**
-A: Yes, a PDF resume is available for download on this website.
+**Q: Does he have a resume?**
+A: Yes, a PDF resume is available for download on the website.
 
 ## Important Notes for the AI Assistant
 - Always be helpful, concise, and professional.
-- If asked about topics unrelated to Alex's professional background, politely redirect the conversation.
+- If asked about topics unrelated to Raman's professional background, politely redirect the conversation.
 - Do not make up information — only reference what's in this knowledge base.
-- If unsure about something, say so and suggest contacting Alex directly.
+- If unsure about something, say so and suggest contacting Raman directly.
 - Keep responses under 150 words unless the user asks for detail.

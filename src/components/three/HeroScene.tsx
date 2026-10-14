@@ -1,3 +1,4 @@
+// BUILT-BY: opus-4.6
 'use client';
 
 import { Suspense, useMemo, useRef, useEffect } from 'react';
@@ -273,8 +274,8 @@ export default function HeroScene() {
       <Suspense fallback={null}>
         <AdaptiveDpr pixelated />
         <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} intensity={0.5} color="#7c3aed" />
-        <pointLight position={[-10, -10, -5]} intensity={0.3} color="#06b6d4" />
+        <pointLight position={[10, 10, 10]} intensity={0.5} color="#ff4d00" />
+        <pointLight position={[-10, -10, -5]} intensity={0.3} color="#e8e4de" />
         <NeuralSphere />
         <AmbientParticles />
         <Environment preset="night" />
