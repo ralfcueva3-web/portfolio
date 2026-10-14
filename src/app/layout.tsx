@@ -82,7 +82,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var stored = localStorage.getItem('ralph-theme');
+                  var stored = localStorage.getItem('Kova-theme');
                   var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
                   if (theme === 'light') document.documentElement.classList.add('light');
                 } catch(e) {}
