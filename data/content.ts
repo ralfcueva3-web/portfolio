@@ -56,11 +56,11 @@ export interface NavItem {
 // ---- Site Configuration ----
 
 export const siteConfig = {
-  name: 'Ralph.dev',
+  name: 'Kova.dev',
   title: 'Raman — Full-Stack Developer & AI Engineer',
   description:
     'Full-stack engineer building production systems with Next.js, TypeScript, and AI. Not another portfolio template.',
-  url: 'https://ralph.dev',
+  url: 'https://Kova.dev',
   ogImage: '/og-image.png',
 };
 
