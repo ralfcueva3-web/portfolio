@@ -149,7 +149,6 @@ export default function HeroSection() {
             animate={noMotion ? {} : { y: [0, 4, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
           >
-            SCROLL ↓
           </motion.span>
         </motion.div>
       </motion.div>
