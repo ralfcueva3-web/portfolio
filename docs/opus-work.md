@@ -9,7 +9,7 @@ All files created or edited during the editorial brutalist redesign:
 - `src/app/page.tsx` — Editorial hero + all sections assembled
 
 ## Data
-- `data/content.ts` — Identity → Raman/Ralph, rewrote all copy
+- `data/content.ts` — Identity → Ayush/Ralph, rewrote all copy
 - `data/knowledge.md` — AI knowledge base identity update
 
 ## Theme
@@ -50,7 +50,7 @@ All files created or edited during the editorial brutalist redesign:
 - `src/components/three/SkillsCloud.tsx` — Updated category colors
 
 ## AI Features
-- `src/lib/ai.ts` — System prompt → Raman/Ralph identity
+- `src/lib/ai.ts` — System prompt → Ayush/Ralph identity
 - `src/app/api/chat/route.ts` — Streaming chat endpoint (NEW)
 - `src/app/api/summarize/route.ts` — Project summarizer endpoint (NEW)
 - `src/components/ai/KovaAvatar.tsx` — KOVA animated geometric mascot with mouse-tracking eyes (NEW)
