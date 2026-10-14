@@ -68,8 +68,8 @@ export const siteConfig = {
 
 export const hero = {
   // No generic "Hello, I'm" — editorial hero copy
-  nameTop: 'Raman',
-  nameBottom: 'aka Ralph',
+  nameTop: 'Ayush',
+  nameBottom: 'aka KOVA',
   descriptor: 'Full-Stack Developer & AI Engineer',
   tagline:
     'I build systems that ship — not slide decks. Currently focused on AI-native web apps, real-time infra, and interfaces that feel like they were designed by someone who actually uses them.',
