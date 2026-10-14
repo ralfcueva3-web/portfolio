@@ -13,7 +13,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle';
  * Editorial Brutalist Navigation Bar.
  *
  * Features:
- * - Brand logo: "Ralph" in display bold + ".dev" in mono orange accent
+ * - Brand logo: "Kova" in display bold + ".dev" in mono orange accent
  * - Monospace letter-spaced desktop navigation with orange accent underline indicator
  * - Minimal text/underlined link for contact (no gradient CTA button)
  * - Backdrop blur and hairline border on scroll
@@ -92,7 +92,7 @@ export default function Navbar() {
             className="flex items-baseline font-display text-xl md:text-2xl font-bold tracking-tight text-text-primary hover:text-accent transition-colors"
             aria-label={siteConfig.name}
           >
-            <span>Ralph</span>
+            <span>Kova</span>
             <span className="font-mono text-accent text-base md:text-lg">.dev</span>
           </a>
 
