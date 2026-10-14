@@ -82,7 +82,7 @@ export default function EasterEggs() {
       'color: #ff4d00; font-size: 24px; font-weight: bold; font-family: monospace;'
     );
     console.log(
-      '%cYou found the console. Respect.\nBuilt with Next.js, Three.js, and an unreasonable amount of CSS variables.\n\nLooking at the source? Hire me → hello@ralf.dev',
+      '%cYou found the console. Respect.\nBuilt with Next.js, Three.js, and an unreasonable amount of CSS variables.\n\nLooking at the source? Hire me → cuevaralf432@gmail.com',
       'color: #9a9590; font-size: 12px; font-family: monospace; line-height: 1.6;'
     );
 

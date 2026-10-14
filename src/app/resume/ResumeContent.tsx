@@ -69,10 +69,10 @@ export default function ResumeContent() {
             <a href={`https://${resumeData.website}`} className="font-mono text-xs hover:text-accent transition-colors">
               {resumeData.website}
             </a>
-            <a href="https://github.com/ralf" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            <a href="https://github.com/ralfcueva3-web" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
               <FiGithub size={14} />
             </a>
-            <a href="https://linkedin.com/in/ayush-ralf" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+            <a href="www.linkedin.com/in/ayush-chakraborty-246358284" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
               <FiLinkedin size={14} />
             </a>
           </div>

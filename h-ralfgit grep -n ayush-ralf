@@ -1,0 +1,4 @@
+[35mdata/content.ts[m[36m:[m[32m400[m[36m:[m    twitter: 'https://twitter.com/[1;31mralfdev[m',
+[35msrc/components/layout/Footer.tsx[m[36m:[m[32m55[m[36m:[m      handle: '@[1;31mralfdev[m',
+[35msrc/components/sections/Contact.tsx[m[36m:[m[32m67[m[36m:[m    { name: 'Twitter', href: contact.socials.twitter, icon: FiTwitter, handle: '@[1;31mralfdev[m' },
+[35msrc/lib/structured-data.ts[m[36m:[m[32m27[m[36m:[m      'https://twitter.com/[1;31mralfdev[m',
