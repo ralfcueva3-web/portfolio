@@ -2,7 +2,7 @@
 // ============================================
 // PORTFOLIO CONTENT — Single source of truth
 // Edit this file to update all site content.
-// Brand: Ralph.dev | Raman, aka Ralph
+// Brand: Kova.dev | Raman, aka Kova
 // ============================================
 
 // ---- Type Definitions ----
@@ -158,7 +158,7 @@ export const projects: Project[] = [
       'A full-stack conversational AI platform that supports multiple LLM providers, real-time streaming responses, conversation history, and an intelligent RAG pipeline. Built with a focus on sub-200ms latency and enterprise-grade reliability.',
     stack: ['Next.js', 'TypeScript', 'Groq', 'LangChain', 'PostgreSQL', 'Redis', 'Docker'],
     liveUrl: 'https://neuralchat.demo.dev',
-    githubUrl: 'https://github.com/ralph/neuralchat',
+    githubUrl: 'https://github.com/Kova/neuralchat',
     image: '/images/project-neuralchat.jpg',
     video: null,
     featured: true,
@@ -173,7 +173,7 @@ export const projects: Project[] = [
       'An intelligent developer dashboard that aggregates GitHub activity, automates code reviews with GPT-4, tracks sprint velocity, and surfaces actionable productivity insights. Features real-time collaboration and Slack integration.',
     stack: ['React', 'Node.js', 'MongoDB', 'OpenAI', 'GraphQL', 'WebSockets'],
     liveUrl: 'https://devflow.demo.dev',
-    githubUrl: 'https://github.com/ralph/devflow',
+    githubUrl: 'https://github.com/Kova/devflow',
     image: '/images/project-devflow.jpg',
     video: null,
     featured: true,
@@ -188,7 +188,7 @@ export const projects: Project[] = [
       'A browser-based design tool supporting real-time multi-user collaboration, WebGL-accelerated canvas rendering, layer management, and Git-like version control for design files. Supports exporting to Figma and SVG formats.',
     stack: ['Next.js', 'Three.js', 'Y.js', 'PostgreSQL', 'AWS S3', 'WebRTC'],
     liveUrl: 'https://pixelforge.demo.dev',
-    githubUrl: 'https://github.com/ralph/pixelforge',
+    githubUrl: 'https://github.com/Kova/pixelforge',
     image: '/images/project-pixelforge.jpg',
     video: null,
     featured: false,
@@ -203,7 +203,7 @@ export const projects: Project[] = [
       'An analytics platform that lets non-technical users query complex datasets using natural language. Features automated data visualization, anomaly detection, and scheduled report generation powered by fine-tuned transformer models.',
     stack: ['Python', 'FastAPI', 'React', 'PyTorch', 'PostgreSQL', 'Docker', 'Kubernetes'],
     liveUrl: 'https://datalens.demo.dev',
-    githubUrl: 'https://github.com/ralph/datalens',
+    githubUrl: 'https://github.com/Kova/datalens',
     image: '/images/project-datalens.jpg',
     video: null,
     featured: false,
@@ -280,11 +280,11 @@ export const contact = {
   title: "Let's work together",
   description:
     "Have something interesting to build? I'm always up for a conversation about AI, systems, or anything that ships.",
-  email: 'hello@ralph.dev',
+  email: 'hello@Kova.dev',
   socials: {
-    github: 'https://github.com/ralph',
-    linkedin: 'https://linkedin.com/in/raman-ralph',
-    twitter: 'https://twitter.com/ralphdev',
+    github: 'https://github.com/Kova',
+    linkedin: 'https://linkedin.com/in/raman-Kova',
+    twitter: 'https://twitter.com/Kovadev',
   },
 };
 
