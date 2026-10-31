@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { hero } from '@/../../data/content';
 import HeroSceneWrapper from '@/components/three/HeroSceneWrapper';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import PixelAssemble from '@/components/ui/PixelAssemble';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -45,6 +46,19 @@ export default function HeroSection() {
         style={noMotion ? {} : { scale: sceneScale }}
       >
         <HeroSceneWrapper />
+      </motion.div>
+
+            {/* Right-side banner — pixels gather into the image after the loader */}
+      <motion.div
+        className="hidden lg:block absolute z-0 right-6 xl:right-12 top-[30%] w-[44vw] max-w-[760px] pointer-events-none"
+        style={noMotion ? {} : { y: heroY, opacity: heroOpacity }}
+      >
+        <PixelAssemble
+          src="/images/hero-banner.jpg"
+          alt="Hooded developer coding at a glowing desk at night"
+          cell={8}
+          duration={2600}
+        />
       </motion.div>
 
       <motion.div
